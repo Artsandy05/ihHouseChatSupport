@@ -8,7 +8,7 @@ const DB_USER = process.env.DB_LOCAL_USER;
 const DB_PASS = process.env.DB_LOCAL_PASS;
 const DB_NAME = process.env.DB_LOCAL_NAME;
 
-console.log(DB_NAME, DB_PASS, DB_USER, DB_HOST, DB_DIALECT)
+console.log(DB_NAME, DB_PASS, DB_USER, DB_HOST, DB_DIALECT, process.env.PORT);
 
 const connection = new Sequelize(
   DB_NAME,
