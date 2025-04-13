@@ -1,0 +1,117 @@
+#header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #ffea00 0%, #ffc600 100%);
+  padding: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  position: relative;
+  z-index: 999;
+}
+
+#backArrowIcon {
+  position: absolute;
+  left: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+#headerTitle {
+  flex-grow: 1;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 15px;
+}
+
+#headerIcon {
+  position: absolute;
+  height: 28px;
+  width: 40px;
+  right: 40px;
+}
+
+#logoImage {
+  width: 151px;
+  height: 151px;
+}
+
+#liveChatPaper,
+#callUsPaper,
+#emailUsPaper {
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  // height: 85px;
+  flex-direction: column;
+  align-items: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  width: 85%;
+  color: white;
+}
+
+#liveChatPaper {
+  background: linear-gradient(180deg, #ffea00 0%, #ffc600 100%);
+}
+
+#callUsPaper {
+  background: linear-gradient(360deg, #009135 0%, #00cb60 100%);
+}
+
+#emailUsPaper {
+  background: linear-gradient(360deg, #46aef7 0%, #1dd5e6 100%);
+}
+
+#supportIcon {
+  width: 23px;
+  height: 23px;
+}
+
+#supportText {
+  margin-left: 8px;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+}
+
+#arrowIcon {
+  width: 27px;
+  height: 27px;
+  margin-left: 8px;
+}
+
+#contactNumber,
+#emailAddress,
+#availabilityText {
+  margin-top: 8px;
+  margin-left: 29px;
+  font-weight: 300;
+  font-family: "Baloo 2";
+}
+
+#footerText {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: "Baloo 2";
+  font-weight: 400;
+  font-size: 14px;
+}
+
+#footerLink {
+  text-decoration: none;
+  color: #2196f3;
+}
+#threeSectionsWrapper {
+  width: 80%;
+  padding: 20px;
+  background: #fdfdfd;
+  box-shadow: 0px 0px 4px rgba(153, 153, 153, 0.25);
+  border-radius: 20px;
+}
+#concernsText {
+  font-family: "Baloo 2";
+}
