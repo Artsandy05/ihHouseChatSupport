@@ -1,42 +1,5 @@
-import dotenv from "dotenv";
-dotenv.config();
-
-interface DatabaseConfig {
-  dialect: string;
-  host: string;
-  username: string;
-  password: string;
-  database: string;
-  timezone: string;
-  migrationStorageTableName: string;
-  port: number;
-  stasher_url: string;
-  stasher_token: string;
-  stasher_secret: string;
-  megaxcess_api_id: string;
-  megaxcess_secret_key: string;
-  icorepay_url: string;
-  icorepay_service_id: string;
-  icorepay_passwork: string;
-  icorepay_secret_key: string;
-  icorepay_deposit_mode: string;
-  icorepay_withdraw_mode: string;
-  zoloz_client_id: string;
-  zoloz_base_url: string;
-  base_url: string;
-  frontend_url: string;
-  m360_app_key: string,
-  m360_secret: string,
-  m360_base_url: string,
-  twilio_account_sid:  string,
-  twilio_auth_token: string,
-  twilio_service_sid: string,
-  telesign_customer_id: string,
-  telesign_key_id:  string,
-  telesign_api_key: string,
-}
-
-const config: { [key: string]: DatabaseConfig } = {
+require("dotenv").config();
+module.exports = {
   local: {
     dialect: "mysql",
     host: process.env.DB_LOCAL_HOST || "",
@@ -46,7 +9,7 @@ const config: { [key: string]: DatabaseConfig } = {
     timezone: process.env.DB_LOCAL_TIMEZONE || "+08:00",
     migrationStorageTableName: "migrations",
     port: 3306,
-
+    
     stasher_url: process.env.STASHER_DEV_URL || "",
     stasher_token: process.env.STASHER_DEV_TOKEN || "",
     stasher_secret: process.env.STASHER_DEV_SECRET || "",
@@ -75,7 +38,7 @@ const config: { [key: string]: DatabaseConfig } = {
     telesign_customer_id:  process.env.TELESIGN_CUSTOMER_ID || "",
     telesign_key_id:  process.env.TELESIGN_KEY_ID || "",
     telesign_api_key: process.env.TELESIGN_API_KEY || "",
-    
+
     base_url: process.env.LOCAL_BASE_URL || "",
     frontend_url: process.env.LOCAL_FRONTEND_URL || "",
     // Other configurations for development...
@@ -106,7 +69,7 @@ const config: { [key: string]: DatabaseConfig } = {
 
     zoloz_client_id: process.env.ZOLOZ_DEV_CLIENT_ID || "",
     zoloz_base_url: process.env.ZOLOZ_DEV_BASE_URL || "",
-    
+
     m360_app_key:  process.env.M360_APP_KEY || "",
     m360_secret:  process.env.M360_SECRET || "",
     m360_base_url: process.env.M360_BASE_URL || "",
@@ -132,6 +95,7 @@ const config: { [key: string]: DatabaseConfig } = {
     timezone: process.env.DB_STAGING_TIMEZONE || "+08:00",
     migrationStorageTableName: "migrations",
     port: 3306,
+
     stasher_url: process.env.STASHER_DEV_URL,
     stasher_token: process.env.STASHER_DEV_TOKEN,
     stasher_secret: process.env.STASHER_DEV_SECRET,
@@ -148,7 +112,7 @@ const config: { [key: string]: DatabaseConfig } = {
 
     zoloz_client_id: process.env.ZOLOZ_DEV_CLIENT_ID || "",
     zoloz_base_url: process.env.ZOLOZ_DEV_BASE_URL || "",
-    
+
     m360_app_key:  process.env.M360_APP_KEY || "",
     m360_secret:  process.env.M360_SECRET || "",
     m360_base_url: process.env.M360_BASE_URL || "",
@@ -181,7 +145,7 @@ const config: { [key: string]: DatabaseConfig } = {
 
     megaxcess_api_id: process.env.MEGAXCESS_PRODUCTION_API_ID || "",
     megaxcess_secret_key: process.env.MEGAXCESS_PRODUCTION_SECRET_KEY || "",
-
+    
     icorepay_url: process.env.ICOREPAY_PROD_URL || "",
     icorepay_service_id: process.env.ICOREPAY_PROD_SERVICE_ID || "",
     icorepay_passwork: process.env.ICOREPAY_PROD_PASSWORK || "",
@@ -191,8 +155,8 @@ const config: { [key: string]: DatabaseConfig } = {
 
     zoloz_client_id: process.env.ZOLOZ_PROD_CLIENT_ID || "",
     zoloz_base_url: process.env.ZOLOZ_PROD_BASE_URL || "",
-    m360_app_key:  process.env.M360_APP_KEY || "",
 
+    m360_app_key:  process.env.M360_APP_KEY || "",
     m360_secret:  process.env.M360_SECRET || "",
     m360_base_url: process.env.M360_BASE_URL || "",
 
@@ -209,5 +173,3 @@ const config: { [key: string]: DatabaseConfig } = {
     // Other configurations for production...
   },
 };
-
-export default config;
