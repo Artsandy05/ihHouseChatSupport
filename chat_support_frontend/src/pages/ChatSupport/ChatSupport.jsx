@@ -42,12 +42,13 @@ const ChatSupport = () => {
   const userDetailsParam = searchParams.get('data');
   const [isChatEnded, setIsChatEnded] = useState(false);
   let decrypted;
+  let userInfo;
 
   if(userDetailsParam){
     decrypted = encryptor.decryptParams(userDetailsParam);
   }
 
-  console.log("Decrypted user details:", decrypted);
+
 
   const urlUserDetails = decrypted || null;
 
@@ -57,14 +58,26 @@ const ChatSupport = () => {
     return parseInt(`${timestamp}${random}`.slice(-9)); // Ensures we get a 9-digit number
   };
     
-  let userInfo = { 
-    id: urlUserDetails?.id ?? generateUniqueId(), 
-    first_name: urlUserDetails?.first_name ?? 'Guest', 
-    last_name: urlUserDetails?.last_name ?? 'User', 
-    mobile_number: urlUserDetails?.mobile ?? '+639000000000', 
-    email: urlUserDetails?.email ?? 'test@gmail.com', 
-    role: 'player' 
-  };
+
+  if(urlUserDetails && urlUserDetails?.id){
+    userInfo = { 
+      id: urlUserDetails?.id, 
+      first_name: urlUserDetails?.first_name, 
+      last_name: urlUserDetails?.last_name, 
+      mobile_number: urlUserDetails?.mobile, 
+      email: urlUserDetails?.email, 
+      role: 'player' 
+    };
+  }else{
+    userInfo = { 
+      id: generateUniqueId(), 
+      first_name: 'Guest', 
+      last_name: 'User', 
+      mobile_number: '+639000000000', 
+      email: 'test@gmail.com', 
+      role: 'player' 
+    };
+  }
   
   useEffect(() => {
     if(userInfo && userInfo.first_name !== 'Test'){
