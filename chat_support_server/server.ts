@@ -3,6 +3,7 @@ import { LOCAL } from "./constants";
 
 const start = async () => {
   const environment = process.env.NODE_ENV || "local";
+  console.log("Environment:", environment);
 
   try {
     // await database.sync();

@@ -25,6 +25,7 @@ const fastifyCookie = require("@fastify/cookie");
 const path = require("node:path");
 const fastifyJwt = require("@fastify/jwt");
 const fastifyAuth = require("@fastify/auth");
+
 const fastify = require("fastify")({
   logger: true,
   trustProxy: true
@@ -45,7 +46,7 @@ fastify.register(fastifyCors, {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 });
-
+console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 // Start cron jobs
 startCronJob();
 
