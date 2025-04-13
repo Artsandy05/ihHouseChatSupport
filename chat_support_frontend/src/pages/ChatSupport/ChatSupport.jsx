@@ -42,11 +42,30 @@ const ChatSupport = () => {
   const userDetailsParam = searchParams.get('data');
   const [isChatEnded, setIsChatEnded] = useState(false);
 
-  const generateUniqueId = () => {
+  const generateUniqueId = (id = false) => {
+    if (id !== false) {
+      // Convert the ID into a deterministic but "randomized" version
+      const str = id.toString();
+      let hash = 0;
+      
+      // Simple hashing algorithm (similar to Java's String.hashCode())
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      
+      // Ensure positive number and 9 digits
+      const randomized = Math.abs(hash).toString().padStart(9, '0').slice(-9);
+      return parseInt(randomized);
+    }
+    
+    // Default case: Generate new random ID
     const timestamp = Date.now();
     const random = Math.floor(Math.random() * 10000);
-    return parseInt(`${timestamp}${random}`.slice(-9)); // Ensures we get a 9-digit number
+    return parseInt(`${timestamp}${random}`.slice(-9));
   };
+  
     
   const userInfo = useMemo(() => {
     let stored = localStorage.getItem('userInfo');
@@ -56,7 +75,7 @@ const ChatSupport = () => {
       decrypted = encryptor.decryptParams(userDetailsParam);
       if (decrypted) {
         const newUser = {
-          id: decrypted.id,
+          id: generateUniqueId(decrypted.id),
           first_name: decrypted.first_name,
           last_name: decrypted.last_name,
           mobile_number: decrypted.mobile,
