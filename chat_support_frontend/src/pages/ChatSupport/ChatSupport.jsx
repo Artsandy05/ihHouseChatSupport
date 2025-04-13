@@ -48,9 +48,15 @@ const ChatSupport = () => {
   }
 
   const urlUserDetails = decrypted || null;
+
+  const generateUniqueId = () => {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 10000);
+    return parseInt(`${timestamp}${random}`.slice(-9)); // Ensures we get a 9-digit number
+  };
     
   let userInfo = { 
-    id: urlUserDetails?.id ?? -1, 
+    id: urlUserDetails?.id ?? generateUniqueId(), 
     first_name: urlUserDetails?.first_name ?? 'Guest', 
     last_name: urlUserDetails?.last_name ?? 'User', 
     mobile_number: urlUserDetails?.mobile ?? '+639000000000', 
