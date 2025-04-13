@@ -116,7 +116,7 @@ const [hasReceivedMessage, setHasReceivedMessage] = useState(false);
     if (isDoneFetchingMessages) {
         setTimeout(async () => {
           if (messageList.length === 0) {
-            await handleSendMessage(true, "Welcome to Karera.Live! We’re here for you 24/7. How can we assist you today?");
+            await handleSendMessage(true, "Welcome to Kingfisher777.com! We’re here for you 24/7. How can we assist you today?");
           }
         }, 500); 
     }

@@ -421,7 +421,7 @@ const ChatSupport = () => {
                     fontFamily: "'Poppins', sans-serif"
                   }}
                 >
-                  support@karera.live
+                  support@kingfisher777.com
                 </Typography>
               </Box>
             </Box>
