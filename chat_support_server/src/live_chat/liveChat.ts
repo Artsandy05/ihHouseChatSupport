@@ -44,47 +44,6 @@ function liveChat(fastify) {
     root: path.join(__dirname, "src/live_chat"), // Path to your chatImages folder
     prefix: `${process.env.PREFIX}/imgs`,  // The prefix for frontend access
   });
-
-  // fastify.server.on('upgrade', async (request, socket, head) => {
-  //   const url = new URL(request.url, 'http://localhost');
-  //   const path = url.pathname;
-    
-  //   if (path === '/api/livechat') {
-
-      
-  //     let userData = null;
-  //     let gameName = url.searchParams.get('game');
-  //     let isPlayerInChatSupport = url.searchParams.get('isPlayerInChatSupport');
-  //     try {
-  //       const queryParams = url.searchParams;
-  //       const uuid = queryParams.get('uuid');
-
-  //       if (hasValue(uuid)) {  // Test mode, bypassing validation to make it easier to test
-  //         userData = { uuid: uuid, game:gameName };
-  //       } else {
-  //         if (hasValue(token)) {
-  //           userData = await fastify.jwt.verify(token);
-  //           // Add the gameName to the userData if it exists
-  //           if (hasValue(gameName)) {
-  //             userData.game = gameName;
-  //           }
-  //           if (hasValue(isPlayerInChatSupport)) {
-  //             userData.isPlayerInChatSupport = isPlayerInChatSupport;
-  //           }
-  //         } else {
-  //           console.log("No uuid nor token");
-  //         }
-  //       }
-        
-  //       wss.handleUpgrade(request, socket, head, async (ws) => {
-  //         wss.emit('connection', ws, userData);
-  //       });
-  //     } catch (err) {
-  //       console.error('JWT token verification failed:', err.message);
-  //       socket.destroy();
-  //     }
-  //   }
-  // });
   
   fastify.server.on('upgrade', async (request, socket, head) => {
     const url = new URL(request.url, 'http://localhost');
