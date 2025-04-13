@@ -46,7 +46,7 @@ fastify.register(fastifyCors, {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 });
-console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
 // Start cron jobs
 startCronJob();
 

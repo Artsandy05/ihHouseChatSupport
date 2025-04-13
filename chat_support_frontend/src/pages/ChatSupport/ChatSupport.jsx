@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { 
   Grid, 
   Typography, 
@@ -41,16 +41,6 @@ const ChatSupport = () => {
   const [searchParams] = useSearchParams();
   const userDetailsParam = searchParams.get('data');
   const [isChatEnded, setIsChatEnded] = useState(false);
-  let decrypted;
-  let userInfo;
-
-  if(userDetailsParam){
-    decrypted = encryptor.decryptParams(userDetailsParam);
-  }
-
-
-
-  const urlUserDetails = decrypted || null;
 
   const generateUniqueId = () => {
     const timestamp = Date.now();
@@ -58,32 +48,43 @@ const ChatSupport = () => {
     return parseInt(`${timestamp}${random}`.slice(-9)); // Ensures we get a 9-digit number
   };
     
+  const userInfo = useMemo(() => {
+    let stored = localStorage.getItem('userInfo');
+    let decrypted;
 
-  if(urlUserDetails && urlUserDetails?.id){
-    userInfo = { 
-      id: urlUserDetails?.id, 
-      first_name: urlUserDetails?.first_name, 
-      last_name: urlUserDetails?.last_name, 
-      mobile_number: urlUserDetails?.mobile, 
-      email: urlUserDetails?.email, 
-      role: 'player' 
-    };
-  }else{
-    userInfo = { 
-      id: generateUniqueId(), 
-      first_name: 'Guest', 
-      last_name: 'User', 
-      mobile_number: '+639000000000', 
-      email: 'test@gmail.com', 
-      role: 'player' 
-    };
-  }
-  
-  useEffect(() => {
-    if(userInfo && userInfo.first_name !== 'Test'){
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    if (userDetailsParam) {
+      decrypted = encryptor.decryptParams(userDetailsParam);
+      if (decrypted) {
+        const newUser = {
+          id: decrypted.id,
+          first_name: decrypted.first_name,
+          last_name: decrypted.last_name,
+          mobile_number: decrypted.mobile,
+          email: decrypted.email,
+          role: 'player',
+        };
+        localStorage.setItem('userInfo', JSON.stringify(newUser));
+        localStorage.setItem('data', JSON.stringify(userDetailsParam));
+        return newUser;
+      }
     }
-  }, [userInfo]);
+
+    if (stored) {
+      return JSON.parse(stored); 
+    }
+
+    const newUser = {
+      id: generateUniqueId(),
+      first_name: 'Guest',
+      last_name: 'User',
+      mobile_number: '+639000000000',
+      email: 'test@gmail.com',
+      role: 'player',
+    };
+
+    localStorage.setItem('userInfo', JSON.stringify(newUser)); // Save new user to localStorage
+    return newUser;
+  }, [userDetailsParam]);
 
   const primaryColor = 'rgb(82, 164, 71)';
   const secondaryColor = '#FFC600';

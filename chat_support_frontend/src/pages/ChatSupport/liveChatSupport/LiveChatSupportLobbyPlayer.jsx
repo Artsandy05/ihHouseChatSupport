@@ -39,19 +39,13 @@ const LiveChatSupportLobbyPlayer = () => {
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const userInfoString = localStorage.getItem('userInfo');
+  const data = localStorage.getItem('data');
   let id, first_name, last_name, mobile_number, email, user_type;
   if (userInfoString) {
     const userInfo = JSON.parse(userInfoString);
     ({ id, first_name, last_name, mobile_number, email, user_type } = userInfo);
-  } else {
-    id = -1;
-    first_name = 'Guest';
-    last_name = 'User';
-    mobile_number = '';
-    email = '';
-    user_type = 'guest';
   }
-
+  
   const userInfoRef = useRef({ id, first_name, last_name, mobile_number, email, role: 'player' });
   
   const [csr, setCsr] = useState(null);
@@ -71,7 +65,7 @@ const LiveChatSupportLobbyPlayer = () => {
   const lightPrimary = 'rgba(82, 164, 71, 0.1)';
 
   const handleBackClick = () => {
-    navigate('/chat-support');
+    navigate(data ? `/chat-support?data=${data}`: '/chat-support');
   };
 
   const getBackground = useCallback((index) => {

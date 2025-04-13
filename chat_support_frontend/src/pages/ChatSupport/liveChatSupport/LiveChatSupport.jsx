@@ -45,11 +45,10 @@ const [hasReceivedMessage, setHasReceivedMessage] = useState(false);
   const fileInputRef = useRef(null);
   let userInfo;
   const userInfoString = localStorage.getItem('userInfo');
+  const data = localStorage.getItem('data');
   if (userInfoString) {
     const userInfoConverted = JSON.parse(userInfoString);
     userInfo = userInfoConverted;
-  } else {
-    userInfo = {id:-1,first_name:'Guest',last_name: 'User',mobile_number: '+639000000000',email: '', role:'player'};
   }
   
   const url = getRequiredUrl(true, userInfo);
@@ -107,7 +106,7 @@ const [hasReceivedMessage, setHasReceivedMessage] = useState(false);
     const userId = await getUserId();
     navigate(
       userInfo.role === 'player'
-        ? '/chat-support'
+        ? data ? `/chat-support?data=${data}`: '/chat-support'
         : '/game/live-chat-support-lobby',
       userInfo.role !== 'player' && { state: { userInfo, userId } }
     );

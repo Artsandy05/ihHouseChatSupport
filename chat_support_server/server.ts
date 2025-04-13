@@ -3,8 +3,6 @@ import { LOCAL } from "./constants";
 
 const start = async () => {
   const environment = process.env.NODE_ENV || "local";
-  
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
   try {
     if (environment !== LOCAL) {
