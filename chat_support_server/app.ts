@@ -26,7 +26,7 @@ const path = require("node:path");
 const fastifyJwt = require("@fastify/jwt");
 const fastifyAuth = require("@fastify/auth");
 const fastify = require("fastify")({
-  logger: false,
+  logger: true,
   trustProxy: true
 });
 
