@@ -116,7 +116,7 @@ function liveChat(fastify) {
         game: userData.game,
         isPlayerInChatSupport: userData.isPlayerInChatSupport
     };
-    console.log(finalUserInfo, 'test');
+    
 
     if (finalUserInfo.role === 'player' && !finalUserInfo.isPlayerInChatSupport) {
         await User.update(

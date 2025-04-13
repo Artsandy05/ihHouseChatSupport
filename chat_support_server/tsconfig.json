@@ -15,7 +15,7 @@
     "types": ["node", "@types/babel__core", "jest", "puppeteer"],
     "lib": ["ES6", "DOM"]
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "server.js", "app.js", "config/config.js", "config/database.js"],
   "devDependencies": {
     "typescript": "^4.5.4"
   }

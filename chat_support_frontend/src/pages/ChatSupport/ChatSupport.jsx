@@ -47,6 +47,8 @@ const ChatSupport = () => {
     decrypted = encryptor.decryptParams(userDetailsParam);
   }
 
+  console.log("Decrypted user details:", decrypted);
+
   const urlUserDetails = decrypted || null;
 
   const generateUniqueId = () => {
