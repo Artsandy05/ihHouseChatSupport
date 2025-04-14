@@ -28,8 +28,8 @@ import tresLetraBg from "@assets/images/home-tres-letra-karera-img.png";
 import zodiacRaceBg from "@assets/images/zodiac-race-banner-long.png";
 import checkCircleGreenIcon from "@assets/images/check-circle-green-icon.png";
 
-export const BASE_URL = 'http://localhost:8001/api/v1';
-export const SOCKET_URL = 'ws://localhost:8001/api';
+export const BASE_URL = import.meta.env.VITE_LOCAL_BASE_URL;
+export const SOCKET_URL = import.meta.env.VITE_WS_BASE_URL;
 
 export const DRAWER_WIDTH = 280;
 
