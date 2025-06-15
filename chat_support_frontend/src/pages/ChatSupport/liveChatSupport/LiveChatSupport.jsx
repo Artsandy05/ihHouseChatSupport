@@ -18,6 +18,10 @@ import { getRequiredUrl } from '../components/common';
 import { checkConvoHasConcern, getConcerns, getConvo, getMessagesByConvoId, rateChat, updateConversationConcernId, updateConversationStatus, updateMessageRead } from '../api/chatSupportAPI';
 import { ArrowBack, AttachFile, Chat, ChatBubbleOutline, Close, ExitToApp, MoreVert, Send, SentimentVeryDissatisfied, SentimentVerySatisfied, StarRate, StarRateOutlined } from '@mui/icons-material';
 import WebSocketManager from '../../../api_services/WebSocketManager';
+import back from "@assets/images/arrow-gray-left.png";
+import csicon from "@assets/images/chat-support-white-icon.png";
+import send from "@assets/images/live-chat-send-button.png";
+import attach from "@assets/images/attachFileIcon.png";
 
 const LiveChatSupport = () => {
   const navigate = useNavigate();
@@ -551,12 +555,17 @@ useEffect(() => {
     <div id={styles.container}>
       <div id={styles.header}>
       <IconButton onClick={handleBackClick} sx={{ color: 'white' }}>
-        <ArrowBack />
+        <Box
+          component="img"
+          src={back}
+          alt="attach"
+          sx={{ width: 20}}
+        />
       </IconButton>
       
       <div id={styles.csrInfo}>
         <Avatar src={defaultAvatar} sx={{ width: 40, height: 40 }} />
-        <Typography variant="body2" id={styles.csrName} sx={{ color: 'white', ml: 1 }}>
+        <Typography variant="body2" id={styles.csrName} sx={{ color: 'black', ml: 1 }}>
           {csr && userInfo.role === 'player' && (
             <>
               <Box component="span" sx={{ fontWeight: 'bold' }}>CS </Box>
@@ -583,7 +592,12 @@ useEffect(() => {
       
       {userInfo.role === 'player' ? (
         <IconButton sx={{ color: 'white', ml: 'auto' }}>
-          <Chat />
+          <Box
+          component="img"
+          src={csicon}
+          alt="attach"
+          sx={{ width: 35}}
+        />
         </IconButton>
       ) : (
         <>
@@ -639,7 +653,7 @@ useEffect(() => {
             <Box key={msg.message_id} sx={{ mb: 1 }}>
               {showDateDivider && (
                 <Divider sx={{ my: 2 }}>
-                  <Typography variant="caption" sx={{ color: 'text.secondary', textTransform: 'uppercase' }}>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', textTransform: 'uppercase', fontFamily: "'Baloo 2', sans-serif", }}>
                     {displayDate}
                   </Typography>
                 </Divider>
@@ -648,7 +662,7 @@ useEffect(() => {
               <Box sx={{ 
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: msg.sender_id === Number(userInfo.id) ? 'flex-end' : 'flex-start'
+                alignItems: msg.sender_id === Number(userInfo.id) ? 'flex-end' : 'flex-start',
               }}>
                 <Box sx={{ 
                   display: 'flex',
@@ -657,18 +671,19 @@ useEffect(() => {
                 }}>
                   <Typography variant="caption" sx={{ 
                     color: 'text.secondary',
-                    mr: 1
+                    mr: 1,
+                    fontFamily: "'Baloo 2', sans-serif",
                   }}>
                     {msg.sender_id === Number(userInfo.id) ? 'You' : msg.sender_nickName}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: 'text.disabled' }}>
+                  <Typography variant="caption" sx={{ color: 'text.disabled',fontFamily: "'Baloo 2', sans-serif", }}>
                     {messageDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </Typography>
                 </Box>
 
                 <Paper elevation={0} sx={{
                   p: 1.2,
-                  bgcolor: msg.sender_id === Number(userInfo.id) ? 'primary.main' : 'background.paper',
+                  bgcolor: msg.sender_id === Number(userInfo.id) ? '#00A24A' : 'background.paper',
                   color: msg.sender_id === Number(userInfo.id) ? 'primary.contrastText' : 'text.primary',
                   borderRadius: 3,
                   maxWidth: '80%',
@@ -681,7 +696,7 @@ useEffect(() => {
                   {msg.isImage ? (
                     <FileViewer file={msg.message_text} />
                   ) : (
-                    <Typography variant="body2">{msg.message_text}</Typography>
+                    <Typography variant="body2" sx={{fontFamily: "'Baloo 2', sans-serif",}}>{msg.message_text}</Typography>
                   )}
                 </Paper>
 
@@ -713,7 +728,7 @@ useEffect(() => {
               color: 'text.secondary',
             }}
           >
-            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            <Typography variant="caption" sx={{ color: 'text.secondary',fontFamily: "'Baloo 2', sans-serif", }}>
               {csr?.nickName || 'CSR'} is typing
             </Typography>
             <Box 
@@ -793,12 +808,10 @@ useEffect(() => {
                 }}
                 sx={{
                   borderRadius: 5,
-                  borderColor: 'primary.main',
-                  color: 'primary.main',
-                  '&:hover': {
-                    bgcolor: 'primary.light',
-                    color: 'primary.contrastText'
-                  }
+                  border: '1px solid #FFE400',
+                  fontFamily: "'Baloo 2', sans-serif",
+                  color: '#1A1A1A',
+                  background: '#FFE4002E'
                 }}
               >
                 {concern.concern_type}
@@ -823,7 +836,7 @@ useEffect(() => {
               borderRadius: 2,
               maxWidth: '80%'
             }}>
-              <Typography variant="body2">Kindly choose a concern.</Typography>
+              <Typography variant="body2" sx={{fontFamily: "'Baloo 2', sans-serif",}}>Kindly choose a concern.</Typography>
             </Paper>
           </Box>
         )}
@@ -860,7 +873,8 @@ useEffect(() => {
             p: 0,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            fontFamily: "'Baloo 2', sans-serif",
           }}>
             <ExitToApp sx={{ mr: 1, fontSize: '2rem' }} />
             End Chat Session
@@ -890,10 +904,10 @@ useEffect(() => {
               opacity: 0.9
             }} />
           </Box>
-          <Typography variant="h6" sx={{ mb: 1 }}>
+          <Typography variant="h6" sx={{ mb: 1,fontFamily: "'Baloo 2', sans-serif", }}>
             Are you sure?
           </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body1" sx={{ color: 'text.secondary',fontFamily: "'Baloo 2', sans-serif", }}>
             This will permanently end your current chat session.
           </Typography>
         </DialogContent>
@@ -913,6 +927,7 @@ useEffect(() => {
               py: 1,
               borderColor: 'grey.300',
               color: 'text.primary',
+              fontFamily: "'Baloo 2', sans-serif",
               '&:hover': {
                 borderColor: 'grey.400',
                 backgroundColor: 'grey.100'
@@ -929,6 +944,7 @@ useEffect(() => {
               borderRadius: 2,
               px: 4,
               py: 1,
+              fontFamily: "'Baloo 2', sans-serif",
               background: 'linear-gradient(45deg, rgb(82, 164, 71), rgb(72, 154, 61))',
               boxShadow: '0 3px 5px rgba(82, 164, 71, 0.3)',
               '&:hover': {
@@ -971,7 +987,8 @@ useEffect(() => {
             p: 0,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            fontFamily: "'Baloo 2', sans-serif",
           }}>
             <StarRateOutlined sx={{ mr: 1, fontSize: '2rem' }} />
             Rate Your Experience
@@ -979,7 +996,7 @@ useEffect(() => {
         </Box>
         
         <DialogContent sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ mb: 3 }}>
+          <Typography variant="h6" sx={{ mb: 3,fontFamily: "'Baloo 2', sans-serif", }}>
             Did we solve your concern?
           </Typography>
           
@@ -1020,7 +1037,8 @@ useEffect(() => {
               </Box>
               <Typography variant="body1" sx={{ 
                 fontWeight: 500,
-                color: 'text.primary'
+                color: 'text.primary',
+                fontFamily: "'Baloo 2', sans-serif",
               }}>
                 Yes
               </Typography>
@@ -1057,7 +1075,8 @@ useEffect(() => {
               </Box>
               <Typography variant="body1" sx={{ 
                 fontWeight: 500,
-                color: 'text.primary'
+                color: 'text.primary',
+                fontFamily: "'Baloo 2', sans-serif",
               }}>
                 No
               </Typography>
@@ -1066,7 +1085,8 @@ useEffect(() => {
           
           <Typography variant="body2" sx={{ 
             color: 'text.secondary',
-            fontStyle: 'italic'
+            fontStyle: 'italic',
+            fontFamily: "'Baloo 2', sans-serif",
           }}>
             Your feedback helps us improve our service
           </Typography>
@@ -1116,7 +1136,12 @@ useEffect(() => {
                 sx={{ padding: 0, minWidth: 'unset', height: 25, width: 25 }}
                 onClick={() => handleSendMessage()}
               >
-                <Send sx={{color:'#1976d2'}}/>
+                <Box
+                  component="img"
+                  src={send}
+                  alt="attach"
+                  sx={{ width: 20}}
+                />
               </IconButton>
             ),
           }}
@@ -1128,7 +1153,12 @@ useEffect(() => {
           onClick={handleAddIconClick}
           disabled={!hasChosenConcern && hasSentFirstMessage || isChatEnded}
         >
-          <AttachFile sx={{color:'#1976d2'}}/>
+          <Box
+            component="img"
+            src={attach}
+            alt="attach"
+            sx={{ width: 30}}
+          />
         </IconButton>
         <input
           type="file"

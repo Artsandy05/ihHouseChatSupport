@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import api from "../api_services/api";
 import { setCookie } from "../utils/cookie";
 import { motion, AnimatePresence } from "framer-motion";
+import desktopBg from "@assets/images/desktop-login-bg.png";
+import kareraLogo from "@assets/images/karera-live-logo-final.png";
+import securedLogin from "@assets/images/img-1-for-login.jpg";
+import pagcor from "@assets/images/home-pagcor-banner.png";
 import {
   Box,
   Typography,
@@ -54,20 +58,15 @@ const FloatingLabelTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const GradientButton = styled(Button)(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
+  background: `linear-gradient(360deg, #009135 0%, #00CB60 100%)`,
   color: "white",
   borderRadius: 12,
-  padding: "12px 24px",
   fontWeight: 600,
+  fontFamily: "'Baloo 2', sans-serif",
   letterSpacing: 0.5,
   textTransform: "none",
   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   transition: "all 0.3s ease",
-  "&:hover": {
-    transform: "translateY(-2px)",
-    boxShadow: `0 6px 12px rgba(82, 164, 71, 0.3)`,
-    background: `linear-gradient(135deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
-  },
   "&:active": {
     transform: "translateY(0)",
   },
@@ -119,36 +118,12 @@ const Login = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // Floating particles for background
-  const particles = Array.from({ length: 30 }).map((_, i) => ({
-    id: i,
-    size: `${Math.random() * 10 + 5}px`,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    delay: Math.random() * 5,
-    duration: Math.random() * 30 + 20,
-    opacity: Math.random() * 0.6 + 0.2,
-    blur: Math.random() * 3 + 1
-  }));
-
-  // Floating leaves for background
-  const leaves = Array.from({ length: 8 }).map((_, i) => ({
-    id: i,
-    size: `${Math.random() * 40 + 20}px`,
-    left: `${Math.random() * 100}%`,
-    delay: Math.random() * 5,
-    duration: Math.random() * 40 + 30,
-    rotation: Math.random() * 360,
-    opacity: Math.random() * 0.4 + 0.2
-  }));
-
   return (
     <Box sx={{
       minHeight: "100vh",
       width: "100vw",
       display: "flex",
       flexDirection: "column",
-      background: "linear-gradient(135deg, #f8faf9 0%, #e8f4f0 100%)",
       position: "fixed",
       top: 0,
       left: 0,
@@ -156,83 +131,25 @@ const Login = () => {
       margin: 0,
       padding: 0
     }}>
-      {/* Animated background particles */}
+      {/* Top half with background image */}
       <Box sx={{
-        position: "absolute",
+        height: "50vh",
         width: "100%",
-        height: "100%",
-        overflow: "hidden",
-        zIndex: 0,
-        filter: "blur(0.5px)"
-      }}>
-        {particles.map(particle => (
-          <Box
-            key={`particle-${particle.id}`}
-            component={motion.div}
-            initial={{ 
-              y: 0, 
-              x: particle.left,
-              opacity: 0
-            }}
-            animate={{
-              y: [0, -1000],
-              x: [particle.left, `${parseFloat(particle.left) + Math.random() * 20 - 10}%`],
-              opacity: [0, particle.opacity, 0]
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "linear",
-              delay: particle.delay
-            }}
-            sx={{
-              position: "absolute",
-              borderRadius: "50%",
-              opacity: particle.opacity,
-              background: `rgba(82, 164, 71, ${particle.opacity})`,
-              width: particle.size,
-              height: particle.size,
-              filter: `blur(${particle.blur}px)`
-            }}
-          />
-        ))}
-        
-        {/* Floating leaves */}
-        {leaves.map(leaf => (
-          <Box
-            key={`leaf-${leaf.id}`}
-            component={motion.div}
-            initial={{ 
-              y: 0, 
-              x: leaf.left,
-              opacity: 0,
-              rotate: leaf.rotation
-            }}
-            animate={{
-              y: [0, -800],
-              x: [leaf.left, `${parseFloat(leaf.left) + Math.random() * 30 - 15}%`],
-              opacity: [0, leaf.opacity, 0],
-              rotate: [leaf.rotation, leaf.rotation + 180]
-            }}
-            transition={{
-              duration: leaf.duration,
-              repeat: Infinity,
-              ease: "linear",
-              delay: leaf.delay
-            }}
-            sx={{
-              position: "absolute",
-              opacity: leaf.opacity,
-              width: leaf.size,
-              height: leaf.size,
-              backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%2352a447\"><path d=\"M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z\"/></svg>')",
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
-            }}
-          />
-        ))}
-      </Box>
+        backgroundImage: `url(${desktopBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
+        zIndex: 0
+      }} />
+      
+      {/* Bottom half with white background */}
+      <Box sx={{
+        height: "50vh",
+        width: "100%",
+        backgroundColor: "white",
+        position: "relative",
+        zIndex: 0
+      }} />
 
       {/* Main content */}
       <Box
@@ -241,17 +158,16 @@ const Login = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          flex: 1,
-          width: "100%",
-          py: 4,
-          position: "relative",
-          zIndex: 1,
-          margin: 0,
-          padding: 0
+          zIndex: 1
         }}
       >
         {/* Header */}
@@ -260,7 +176,7 @@ const Login = () => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
-          maxWidth: "1200px",
+          maxWidth: "90%",
           mb: 4,
           flexWrap: "wrap",
           px: 2
@@ -272,29 +188,6 @@ const Login = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             sx={{ display: "flex", alignItems: "center" }}
           >
-            <Box
-              component={motion.div}
-              whileHover={{ rotate: 10 }}
-              transition={{ duration: 0.3 }}
-              sx={{ mr: 2 }}
-            >
-              <svg width="40" height="40" viewBox="0 0 24 24">
-                <motion.path
-                  d="M12 2L4 12L12 22L20 12L12 2Z"
-                  fill="#52a447"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5 }}
-                />
-                <motion.path
-                  d="M12 6L8 12L12 18L16 12L12 6Z"
-                  fill="#3d7e34"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5, delay: 0.3 }}
-                />
-              </svg>
-            </Box>
             <Typography
               variant="h3"
               component="div"
@@ -308,96 +201,33 @@ const Login = () => {
                 letterSpacing: -0.5
               }}
             >
-              <Box 
-                component={motion.span}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                sx={{
-                  backgroundSize: "200% auto",
-                  display: "inline-block"
-                }}
-              >
-                Kingfisher777
+              <Box sx={{ display: "flex", alignItems: "center", position: "relative" }}>
+                <Box
+                  component="img"
+                  src={kareraLogo}
+                  alt="Karera Live Logo"
+                  sx={{
+                    width: 400,
+                    maxWidth: "100%",
+                    objectFit: "contain"
+                  }}
+                />
               </Box>
-              <Box
-                component={motion.div}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                sx={{
-                  position: "absolute",
-                  bottom: -5,
-                  left: 0,
-                  width: "100%",
-                  height: 3,
-                  background: "linear-gradient(90deg, #52a447, #3d7e34)",
-                  transformOrigin: "left center",
-                  borderRadius: 3
-                }}
-              />
             </Typography>
           </Box>
 
-          <Box 
-            component={motion.div} 
-            whileHover={{ scale: 1.05 }}
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            <Box sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              fontSize: "1.1rem",
-              color: "#52a447",
-              fontWeight: 600,
-              background: "rgba(82, 164, 71, 0.1)",
-              p: "10px 20px",
-              borderRadius: 50,
-              border: "2px solid rgba(82, 164, 71, 0.3)",
-              position: "relative",
-              overflow: "hidden"
-            }}>
-              <AnimatePresence>
-                {isHovering && (
-                  <Box
-                    component={motion.div}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.1 }}
-                    exit={{ opacity: 0 }}
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      background: "radial-gradient(circle, rgba(82,164,71,0.3) 0%, rgba(82,164,71,0) 70%)",
-                    }}
-                  />
-                )}
-              </AnimatePresence>
-              <Lock fontSize="small" sx={{ color: "#3d7e34" }} />
-              <Box 
-                component={motion.span}
-                animate={{
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                Secured Login
+          <Box sx={{ display: "flex", alignItems: "center", position: "relative" }}>
+                <Box
+                  component="img"
+                  src={securedLogin}
+                  alt="Karera Live Logo"
+                  sx={{
+                    width: 70,
+                    maxWidth: "100%",
+                    objectFit: "contain"
+                  }}
+                />
               </Box>
-            </Box>
-          </Box>
         </Box>
 
         {/* Login form */}
@@ -450,24 +280,13 @@ const Login = () => {
               sx={{ 
                 fontWeight: 700,
                 mb: 3,
-                background: "linear-gradient(135deg, #52a447, #3d7e34)",
+                background: 'linear-gradient(to bottom, #a0a0a0, #666666)',
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                fontFamily: "'Montserrat', sans-serif"
+                fontFamily: "'Baloo 2', sans-serif"
               }}
             >
-              Welcome
-            </Typography>
-            <Typography 
-              variant="subtitle1" 
-              align="center" 
-              sx={{ 
-                color: "#666", 
-                mb: 4,
-                fontFamily: "'Roboto', sans-serif"
-              }}
-            >
-              Sign in to your Kingfisher777 CSR account
+              Let's get you signed in!
             </Typography>
 
             <Box component="form" onSubmit={handleSubmitLogin}>
@@ -502,7 +321,7 @@ const Login = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Fingerprint sx={{ color: "action.active" }} />
+                      <Lock sx={{ color: "action.active" }} />
                     </InputAdornment>
                   ),
                   endAdornment: (
@@ -582,7 +401,6 @@ const Login = () => {
                 sx={{
                   mt: 2,
                   mb: 3,
-                  py: 1.5,
                   fontSize: "1rem"
                 }}
               >
@@ -592,7 +410,7 @@ const Login = () => {
                     Authenticating...
                   </>
                 ) : (
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1,fontSize: "1.5rem" }}>
                     <Lock fontSize="small" />
                     Sign In
                   </Box>
@@ -626,93 +444,32 @@ const Login = () => {
           textAlign: "center",
           width: "100%",
           maxWidth: "1200px",
-          px: 2
+          px: 2,
+          backgroundColor: "white", // Ensure white background
+          py: 3, // Add some padding
+          borderRadius: 2 // Optional: rounded corners
         }}>
-          <Typography variant="body2" sx={{ color: "#666", fontFamily: "'Roboto', sans-serif" }}>
-            © {new Date().getFullYear()} Kingfisher. All rights reserved.
+          <Box sx={{ display: "flex", alignItems: "center", position: "relative", mb:5, justifyContent: "center" }}>
+            <Box
+              component="img"
+              src={pagcor}
+              alt="Karera Live Logo"
+              sx={{
+                width: 200,
+                maxWidth: "100%",
+                objectFit: "contain"
+              }}
+            />
+          </Box>
+          
+          {/* Copyright text with dark color */}
+          <Typography variant="body2" sx={{ 
+            color: "rgba(0, 0, 0, 0.8)",  // Dark gray/black
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: 500
+          }}>
+            © {new Date().getFullYear()} Karera Live. All rights reserved.
           </Typography>
-          <Grid 
-            container 
-            spacing={2} 
-            justifyContent="center" 
-            sx={{ 
-              mt: 1,
-              '& .MuiGrid-item': {
-                display: 'flex',
-                alignItems: 'center'
-              }
-            }}
-          >
-            <Grid item>
-              <Typography
-                variant="caption"
-                component={motion.div}
-                whileHover={{ scale: 1.05 }}
-                sx={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  gap: 0.5,
-                  color: "#52a447",
-                  fontWeight: 500
-                }}
-              >
-                <Security fontSize="small" /> 256-bit SSL Encryption
-              </Typography>
-            </Grid>
-            <Divider 
-              orientation="vertical" 
-              flexItem 
-              sx={{ 
-                backgroundColor: "rgba(82, 164, 71, 0.3)", 
-                height: 16,
-                my: "auto"
-              }} 
-            />
-            <Grid item>
-              <Typography
-                variant="caption"
-                component={motion.div}
-                whileHover={{ scale: 1.05 }}
-                sx={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  gap: 0.5,
-                  color: "#52a447",
-                  fontWeight: 500
-                }}
-              >
-                <VerifiedUser fontSize="small" /> Licensed and Regulated
-              </Typography>
-            </Grid>
-            <Divider 
-              orientation="vertical" 
-              flexItem 
-              sx={{ 
-                backgroundColor: "rgba(82, 164, 71, 0.3)", 
-                height: 16,
-                my: "auto"
-              }} 
-            />
-            <Grid item>
-              <Typography
-                variant="caption"
-                component={motion.div}
-                whileHover={{ scale: 1.05 }}
-                sx={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  gap: 0.5,
-                  color: "#52a447",
-                  fontWeight: 500
-                }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="#52a447">
-                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-                </svg>
-                GDPR Compliant
-              </Typography>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
     </Box>

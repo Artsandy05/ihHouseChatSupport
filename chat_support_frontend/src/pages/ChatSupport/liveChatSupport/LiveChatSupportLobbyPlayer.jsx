@@ -24,6 +24,7 @@ import maleAvatar from '../../../assets/images/csr-boy-green.png';
 import femaleAvatar from '../../../assets/images/csr-girl-blue.png';
 import WebSocketManager from '../../../api_services/WebSocketManager';
 import { getRequiredUrl } from '../components/common';
+import desktopBg from "@assets/images/desktop-login-bg.png";
 
 
 
@@ -255,7 +256,7 @@ const LiveChatSupportLobbyPlayer = () => {
   return (
     <div className={styles.container} style={{ backgroundColor: '#f5f5f5', touchAction:'manipulation' }}>
       {/* Header Section */}
-      <div className={styles.header} style={{ backgroundColor: primaryColor }}>
+      <div className={styles.header}>
         <div style={{ display: 'flex', alignItems: 'center', padding: '16px' }}>
           <Button 
             onClick={handleBackClick}
@@ -378,7 +379,7 @@ const LiveChatSupportLobbyPlayer = () => {
           margin: 0,
           fontSize: '18px',
           fontWeight: '600',
-          fontFamily: '"Poppins", sans-serif',
+          fontFamily: '"Baloo 2", sans-serif',
         }}>
           Get Help
         </h2>
@@ -493,7 +494,7 @@ const LiveChatSupportLobbyPlayer = () => {
                   color: '#333',
                   fontWeight: '500'
                 }}>
-                  support@example.com
+                  support@karera.live
                 </p>
               </div>
             </div>

@@ -24,6 +24,11 @@ import { getRequiredUrl } from "./components/common";
 import { createConversation, getAllActiveCsr, getAllConversation } from "./api/chatSupportAPI";
 import WebSocketManager from "../../api_services/WebSocketManager";
 import createEncryptor from "./components/createEncryptor";
+import back from "@assets/images/arrow-gray-left.png";
+import csicon from "@assets/images/chat-support-white-icon.png";
+import cslogo from "@assets/images/chat-support-logo.png";
+import cssmallicon from "@assets/images/chat-support-icon.png";
+import email from "@assets/images/email-us.png";
 
 const encryptor = createEncryptor(import.meta.env.VITE_DECRYPTION_KEY);
 
@@ -259,6 +264,23 @@ const ChatSupport = () => {
     marginBottom: '16px',
     borderRadius: '12px',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    background:'linear-gradient(180deg, #FFEA00 0%, #FFC600 100%)',
+    transition: 'transform 0.2s, box-shadow 0.2s',
+    '&:hover': {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 16px rgba(0, 0, 0, 0.15)',
+      cursor: 'pointer'
+    },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  }));
+  const SupportCardBlue = styled(Card)(({ theme }) => ({
+    padding: '16px',
+    marginBottom: '16px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    background:'linear-gradient(360deg, #46AEF7 0%, #1DD5E6 100%)',
     transition: 'transform 0.2s, box-shadow 0.2s',
     '&:hover': {
       transform: 'translateY(-2px)',
@@ -280,7 +302,7 @@ const ChatSupport = () => {
           justifyContent: "space-between",
           px: 2,
           py: 1.5,
-          background: `linear-gradient(180deg, ${primaryColor} 0%, ${primaryColor} 100%)`,
+          background: `linear-gradient(180deg, #FFEA00 0%, #FFC600 100%)`,
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
           color: "white",
           touchAction:'manipulation',
@@ -290,22 +312,32 @@ const ChatSupport = () => {
           zIndex: 1000,
         }}
       >
-        <IconButton onClick={goToHome} sx={{ color: "white" }}>
-          <ArrowBack />
+        <IconButton onClick={goToHome}>
+        <Box
+          component="img"
+          src={back}
+          alt="attach"
+          sx={{ width: 20}}
+        />
         </IconButton>
 
         <Typography 
           variant="h6" 
           sx={{
-            fontFamily: "'Poppins', sans-serif",
-            fontWeight: 600
+            fontFamily: "'Baloo 2', sans-serif",
+            color:'black'
           }}
         >
           Customer Support
         </Typography>
 
         <IconButton sx={{ color: "white" }}>
-          <SupportAgent fontSize="medium" />
+        <Box
+          component="img"
+          src={csicon}
+          alt="attach"
+          sx={{ width: 40}}
+        />
         </IconButton>
       </Box>
 
@@ -322,17 +354,18 @@ const ChatSupport = () => {
           textAlign: 'center',
           mb: 4
         }}>
-          <SupportAgent sx={{ 
-            fontSize: '64px',
-            color: primaryColor,
-            mb: 1
-          }} />
+          <Box
+            component="img"
+            src={cslogo}
+            alt="attach"
+            sx={{ width: 150}}
+          />
           <Typography 
             variant="h5" 
             sx={{
-              fontFamily: "'Poppins', sans-serif",
+              fontFamily: "'Baloo 2', sans-serif",
               fontWeight: 600,
-              color: primaryColor
+              color: 'black'
             }}
           >
             How can we help you?
@@ -345,8 +378,8 @@ const ChatSupport = () => {
             variant="body1" 
             sx={{ 
               mb: 2,
-              fontFamily: "'Poppins', sans-serif",
-              color: 'text.secondary'
+              fontFamily: "'Baloo 2', sans-serif",
+              color: 'black'
             }}
           >
             For concerns or to report an issue:
@@ -356,7 +389,6 @@ const ChatSupport = () => {
           <SupportCard onClick={() => handleNavigation(navigateTo)}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box sx={{
-                bgcolor: primaryColor,
                 p: 1.5,
                 borderRadius: '50%',
                 mr: 2,
@@ -364,13 +396,18 @@ const ChatSupport = () => {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <ChatBubbleOutline sx={{ color: 'white' }} />
+                <Box
+                  component="img"
+                  src={cssmallicon}
+                  alt="attach"
+                  sx={{ width: 40}}
+                />
               </Box>
               <Box>
                 <Typography 
                   variant="subtitle1"
                   sx={{
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Baloo 2', sans-serif",
                     fontWeight: 600
                   }}
                 >
@@ -380,7 +417,7 @@ const ChatSupport = () => {
                   variant="body2"
                   sx={{
                     color: 'text.secondary',
-                    fontFamily: "'Poppins', sans-serif"
+                    fontFamily: "'Baloo 2', sans-serif"
                   }}
                 >
                   Available 24/7
@@ -391,10 +428,9 @@ const ChatSupport = () => {
           </SupportCard>
 
           {/* Email Card */}
-          <SupportCard>
+          <SupportCardBlue>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box sx={{
-                bgcolor: primaryColor,
                 p: 1.5,
                 borderRadius: '50%',
                 mr: 2,
@@ -402,7 +438,12 @@ const ChatSupport = () => {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <EmailOutlined sx={{ color: 'white' }} />
+                <Box
+                  component="img"
+                  src={email}
+                  alt="attach"
+                  sx={{ width: 30}}
+                />
               </Box>
               <Box>
                 <Typography 
@@ -421,12 +462,12 @@ const ChatSupport = () => {
                     fontFamily: "'Poppins', sans-serif"
                   }}
                 >
-                  support@kingfisher777.com
+                  support@karera.live
                 </Typography>
               </Box>
             </Box>
             <ChevronRight sx={{ color: 'action.active' }} />
-          </SupportCard>
+          </SupportCardBlue>
         </Box>
 
         {/* Footer Links */}
@@ -438,14 +479,14 @@ const ChatSupport = () => {
           <Typography 
             variant="body2" 
             sx={{
-              fontFamily: "'Poppins', sans-serif",
-              color: 'text.secondary'
+              fontFamily: "'Baloo 2', sans-serif",
+              color: 'black'
             }}
           >
             <Link 
               onClick={handleOpenTermsAndConditions}
               sx={{
-                color: primaryColor,
+                color: '#46AEF7',
                 textDecoration: 'none',
                 '&:hover': { textDecoration: 'underline' },
                 cursor: 'pointer',
@@ -458,7 +499,7 @@ const ChatSupport = () => {
             <Link 
               onClick={handleOpenPrivacyPolicy}
               sx={{
-                color: primaryColor,
+                color: '#46AEF7',
                 textDecoration: 'none',
                 '&:hover': { textDecoration: 'underline' },
                 cursor: 'pointer',

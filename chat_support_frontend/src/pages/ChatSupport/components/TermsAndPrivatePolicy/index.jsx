@@ -7,7 +7,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       I. Member's Basic Information
     </Grid>
     <Grid item sx={{marginTop:"-10px", textAlign: "justify"}}>
-    To become a Kingfisher777.com Member, new players may register through online registration. Mandatory information of the player and 
+    To become a Karera.live Member, new players may register through online registration. Mandatory information of the player and 
     one (1) valid government-issued Identification 
     (ID) Card must be presented. Only persons twenty-one 
     (21) years of age and above and not among the banned personalities as provided under the Memorandum Circular No. 6, series of 2016, of The Office Of The President, shall strictly be allowed to register and avail of the services of a remote gaming platform.
@@ -17,7 +17,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       II. Communications Opt In
     </Grid>
     <Grid item sx={{marginTop:"-10px", textAlign: "justify"}}>
-      To improve your experience with us, Kingfisher777.com may send you communication materials, including 
+      To improve your experience with us, Karera.live may send you communication materials, including 
       but not limited to administrative and law-mandated announcements, projects, campaigns, or promotional 
       materials.
       º E-mail 
@@ -30,7 +30,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       III. Collection and Privacy Statement
     </Grid>
     <Grid item sx={{marginTop:"-10px", textAlign: "justify"}}>
-      Kingfisher777.com collects your personal information as a requirement of the Philippine Amusement and Gaming Corporation (PAGCOR) and for the purpose of providing you with our services. 
+      Karera.live collects your personal information as a requirement of the Philippine Amusement and Gaming Corporation (PAGCOR) and for the purpose of providing you with our services. 
       Other than PAGCOR, 
       our company needs to share your information with vital suppliers, third-party service providers, related companies, 
       and subsidiaries to provide you with our services, administration of your account, accounting, market study promotions, play tracking, 
@@ -60,7 +60,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Your information shall be kept in our system for as long as your account is active and for a period of at least one (1) year from your last visit.
         </li>
         <li>
-          For any complaints, which includes but is not limited to the handling, correction, or request for deletion of your personal information, you may email at cs@Kingfisher777.com
+          For any complaints, which includes but is not limited to the handling, correction, or request for deletion of your personal information, you may email at cs@Karera.live
         </li>
       </ol>
     </Grid>
@@ -69,7 +69,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       IV. Terms and Conditions for Membership
     </Grid>
     <Grid item sx={{marginTop:"-10px", textAlign: "justify"}}>
-      Kingfisher777.com is open to qualified individuals twenty-one (21) years old and above.
+      Karera.live is open to qualified individuals twenty-one (21) years old and above.
       Pursuant to Presidential Decree 1869, as amended by Republic Act 9487, persons under 21 years of age or students of any school, college, or university in the Philippines are not allowed to play in this gaming establishment.
       Pursuant to Malacañang Memorandum Circular No. 8, the following are not allowed to enter, stay, and/or play in the gaming establishment/platform.
     </Grid>
@@ -105,7 +105,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
         </li>
         <li>
           Financiers/Loan Sharks and the like.
-          Kingfisher777.com has the right to deny application or terminate the membership of any individual who violates the terms and conditions of the membership or provides false or inaccurate information during the membership registration.
+          Karera.live has the right to deny application or terminate the membership of any individual who violates the terms and conditions of the membership or provides false or inaccurate information during the membership registration.
         </li>
       </ol>
     </Grid>
@@ -126,12 +126,12 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       I am required to complete the Know Your Customer requirements prior to my first withdrawal or within seven days, whichever comes first.
     </Grid>
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
-      I am aware that funding, withdrawal, and/or transfers from and to a payment/banking solution other than my registered account may cause suspension, termination of my account, subject to further verification of Kingfisher777.com.
+      I am aware that funding, withdrawal, and/or transfers from and to a payment/banking solution other than my registered account may cause suspension, termination of my account, subject to further verification of Karera.live.
     </Grid>
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
-      I may make transactions to a 3rd party, such as GCash, Paymaya etc. through Kingfisher777.com Remote Gaming Platform. By using the services, I agree that Kingfisher777.com may use all information, including personal and billing information, provided by me to Kingfisher777.com in the course of using the Services ("Payment Instructions"). 
+      I may make transactions to a 3rd party, such as GCash, Paymaya etc. through Karera.live Remote Gaming Platform. By using the services, I agree that Karera.live may use all information, including personal and billing information, provided by me to Karera.live in the course of using the Services ("Payment Instructions"). 
       I acknowledge and agree that it is my sole responsibility to ensure that all my funding and withdrawal transactions are correct, complete, and accurate in all respect and I understand that time is required to process my account instructions. 
-      The account instructions provided by me will be treated as final and executory. Further, by providing Kingfisher777.com with my account instructions, I agree to deposit/withdraw or allow Kingfisher777.com to deduct from my account all fees and charges associated with my fund instructions.
+      The account instructions provided by me will be treated as final and executory. Further, by providing Karera.live with my account instructions, I agree to deposit/withdraw or allow Karera.live to deduct from my account all fees and charges associated with my fund instructions.
     </Grid>
 
     <Grid item sx={{ fontWeight: "bold" }}>
@@ -141,7 +141,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       On delayed deposits and withdrawals due to third-party payment provider's scheduled preventive maintenance - Account will be monitored within 24 hours.
     </Grid>
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
-      If the amount has not been reflected in the player's account, player is requested to report back to Kingfisher777.com to ensure that funds will be credited back into the player's account.
+      If the amount has not been reflected in the player's account, player is requested to report back to Karera.live to ensure that funds will be credited back into the player's account.
     </Grid>
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
       The standard processing period for deposit and withdrawal transactions through third-party payment provider's amounting to Php1 to Php50,000 is One (1) to Three (3) business days.
@@ -153,36 +153,36 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
       While the standard processing period for deposit and withdrawal transaction through third-party payment provider's amounting to Php500,000 and above is Five (5) to Ten (10) business days.
     </Grid>
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
-      Kingfisher777.com is not responsible for any delays caused by circumstances beyond its control, such as, those arising from transactions with third party payment providers and vendors.
+      Karera.live is not responsible for any delays caused by circumstances beyond its control, such as, those arising from transactions with third party payment providers and vendors.
     </Grid>
 
     <Grid item sx={{ fontWeight: "bold" }}>
-      Kingfisher777.com has No Liability
+      Karera.live has No Liability
     </Grid>
 
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
-      I acknowledge and agree that no liability shall be attached to Kingfisher777.com if the latter is unable to complete any funding instructions initiated by me for any reason beyond Kingfisher777.com's control, including, but not limited to, the following:
+      I acknowledge and agree that no liability shall be attached to Karera.live if the latter is unable to complete any funding instructions initiated by me for any reason beyond Karera.live's control, including, but not limited to, the following:
     </Grid>
 
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
       <ol type="i" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
         <li>
-          If, through no fault of Kingfisher777.com, my Account does not contain sufficient funds or if the deposit or withdrawal would exceed the transactional limit set for my Account;
+          If, through no fault of Karera.live, my Account does not contain sufficient funds or if the deposit or withdrawal would exceed the transactional limit set for my Account;
         </li>
         <li>
-          Kingfisher777.com payment processing centre is not working properly or is under system maintenance and I am aware or have been advised by Kingfisher777.com about the malfunction or system downtime or maintenance before I execute the fund transfer instructions
+          Karera.live payment processing centre is not working properly or is under system maintenance and I am aware or have been advised by Karera.live about the malfunction or system downtime or maintenance before I execute the fund transfer instructions
         </li>
         <li>
-          I have not provided Kingfisher777.com with the correct account information, or information that I provided becomes incorrect; and/or
+          I have not provided Karera.live with the correct account information, or information that I provided becomes incorrect; and/or
         </li>
         <li>
-          Circumstances beyond Kingfisher777.com's control (such as, but not limited to, fire, flood, system breakdown, technical bugs or malfunction, and/or types of players; or interference from an outside force), even if foreseeable or foreseen, that may prevent the proper execution of the transfer instructions and Kingfisher777.com have taken reasonable precautions to avoid those circumstances.
+          Circumstances beyond Karera.live's control (such as, but not limited to, fire, flood, system breakdown, technical bugs or malfunction, and/or types of players; or interference from an outside force), even if foreseeable or foreseen, that may prevent the proper execution of the transfer instructions and Karera.live have taken reasonable precautions to avoid those circumstances.
         </li>
       </ol>
     </Grid>
 
     <Grid item sx={{ fontWeight: "bold" }}>
-      Account Suspension may be implemented by Kingfisher777.com due to the following reasons:
+      Account Suspension may be implemented by Karera.live due to the following reasons:
     </Grid>
 
     <Grid item sx={{marginTop:"-5px", textAlign: "justify"}}>
@@ -200,7 +200,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Underage and Banned Personalities - only persons twenty-one (21) years of age and above and not among banned personalities
         </li>
         <li>
-          Other transactions that may be deemed suspicious and subject to further investigation upon the sole and exclusive discretion of Kingfisher777.com.
+          Other transactions that may be deemed suspicious and subject to further investigation upon the sole and exclusive discretion of Karera.live.
         </li>
         <li>
           Use of bot software is not permitted and, if the player is found to have used such software, it will be considered cheating, and the player may be sanctioned accordingly.
@@ -218,7 +218,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Compliance with AML Laws:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-            The User acknowledges and agrees that Kingfisher777.com, the operator of this remote gaming platform (hereinafter referred to as "the Platform"), is committed to full compliance with all applicable AML laws and regulations, including but not limited to the Anti-Money Laundering Act (the "AML Act").
+            The User acknowledges and agrees that Karera.live, the operator of this remote gaming platform (hereinafter referred to as "the Platform"), is committed to full compliance with all applicable AML laws and regulations, including but not limited to the Anti-Money Laundering Act (the "AML Act").
             </li>
           </ol>
         </li>
@@ -226,9 +226,9 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Customer Verification and Reporting:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-              By using the Platform, the User consents to and understands that Kingfisher777.com may perform customer verification
+              By using the Platform, the User consents to and understands that Karera.live may perform customer verification
               checks and maintain records of User transactions in accordance with AML requirements. 
-              The User agrees to report any suspicious or potentially AML-related activities or transactions to Kingfisher777.com as soon as such activities are identified.
+              The User agrees to report any suspicious or potentially AML-related activities or transactions to Karera.live as soon as such activities are identified.
             </li>
           </ol>
         </li>
@@ -236,7 +236,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Record-Keeping:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-              Kingfisher777.com shall maintain accurate records of User transactions, personal information, and AML compliance efforts as required by law. Such records may be retained for a specified period in accordance with AML regulations.
+              Karera.live shall maintain accurate records of User transactions, personal information, and AML compliance efforts as required by law. Such records may be retained for a specified period in accordance with AML regulations.
             </li>
           </ol>
         </li>
@@ -244,8 +244,8 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Termination of Accounts:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-            The User acknowledges that Kingfisher777.com reserves the right to suspend, terminate, or restrict access to the Platform for any User found to be involved in, or reasonably suspected of being involved in, money laundering or other illicit financial activities. Kingfisher777.com may, but shall not have the obligation to, inform you prior to suspending, terminating or restricting the access pursuant to this clause. 
-            You acknowledge the authority of Kingfisher777.com to suspend, terminate or restrict the Access and accordingly, you shall hold Kingfisher777.com free and harmless against any and all consequences of such suspension, termination or restriction, or any loss or damage which you may suffer as a result thereof.
+            The User acknowledges that Karera.live reserves the right to suspend, terminate, or restrict access to the Platform for any User found to be involved in, or reasonably suspected of being involved in, money laundering or other illicit financial activities. Karera.live may, but shall not have the obligation to, inform you prior to suspending, terminating or restricting the access pursuant to this clause. 
+            You acknowledge the authority of Karera.live to suspend, terminate or restrict the Access and accordingly, you shall hold Karera.live free and harmless against any and all consequences of such suspension, termination or restriction, or any loss or damage which you may suffer as a result thereof.
             </li>
           </ol>
         </li>
@@ -253,7 +253,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Cooperation with Investigations:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-            The User agrees to cooperate with Kingfisher777.com, law enforcement agencies, and relevant authorities in the event of an AML investigation or inquiry related to their activities on the Platform.
+            The User agrees to cooperate with Karera.live, law enforcement agencies, and relevant authorities in the event of an AML investigation or inquiry related to their activities on the Platform.
             </li>
           </ol>
         </li>
@@ -269,7 +269,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
           Amendments to AML Requirements:
           <ol type="a" style={{padding:"3px 0 3px 15px",margin:"5px 0 5px 0"}}>
             <li>
-              The User agrees that Kingfisher777.com may, at its discretion, amend its AML requirements to align with changes in AML laws and regulations. Users are expected to adhere to these changes promptly.
+              The User agrees that Karera.live may, at its discretion, amend its AML requirements to align with changes in AML laws and regulations. Users are expected to adhere to these changes promptly.
             </li>
           </ol>
         </li>
@@ -285,7 +285,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
         Effective Date: December 10, 2024            
       </Grid>
       <Grid item sx={{ marginTop:"10px", textAlign: "justify" }}>
-        At KINGFISHER777.COM, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our platform, which includes our website, mobile application, and related services (collectively referred to as the "Platform"). By using the Platform, you consent to the data practices described in this Privacy Policy.
+        At Karera.live, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our platform, which includes our website, mobile application, and related services (collectively referred to as the "Platform"). By using the Platform, you consent to the data practices described in this Privacy Policy.
       </Grid>
       <Grid item sx={{ marginTop:"10px", textAlign: "justify" }}>
         1. Information We Collect
@@ -299,7 +299,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
             a. Personal Information
           </li>
             <li>
-              When you register to Kingfisher777.com, interact with our Platform, we may collect the following personal information
+              When you register to Karera.live, interact with our Platform, we may collect the following personal information
             </li>
           </ol>
             <ul>
@@ -390,7 +390,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
         Deletion: You can request the deletion of your personal data, subject to certain exceptions (e.g., for legal compliance).
         Opt-Out of Communications: You can opt-out of receiving promotional emails or newsletters from us by clicking the "unsubscribe" link in the emails or by contacting us directly.
         Cookies: You can manage cookie preferences in your browser settings.
-        If you wish to exercise any of these rights or have questions about your personal data, please contact us at contact@kingfisher777.com
+        If you wish to exercise any of these rights or have questions about your personal data, please contact us at contact@Karera.live
       </Grid>
       <Grid item sx={{ marginTop:"10px", textAlign: "justify" }}>
         6. Data Retention
@@ -402,7 +402,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
         7. Children's Privacy
       </Grid>
       <Grid item sx={{ marginTop:"10px", textAlign: "justify" }}>
-        Our Platform is not intended for children under the age of TWENTY-ONE (21), and we do not knowingly collect personal information from children. If you believe we have inadvertently collected false information, please contact us at contact@kingfisher777.com
+        Our Platform is not intended for children under the age of TWENTY-ONE (21), and we do not knowingly collect personal information from children. If you believe we have inadvertently collected false information, please contact us at contact@Karera.live
       </Grid>
       <Grid item sx={{ marginTop:"10px", textAlign: "justify" }}>
         8. International Data Transfers
@@ -432,7 +432,7 @@ export const TermsAndPrivatePolicy = forwardRef((props, ref) => (
         SAMPLE COMPANY
       </Typography>
       <Typography sx={{ fontSize: "14px" }}>
-        Email: <a href="mailto:contact@kingfisher777.com">contact@kingfisher777.com</a>
+        Email: <a href="mailto:contact@Karera.live">contact@Karera.live</a>
       </Typography>
     </Grid>
     </Grid>

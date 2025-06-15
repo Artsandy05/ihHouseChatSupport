@@ -12,8 +12,8 @@ import copyIcon from "@assets/images/copyIcon.png";
 import threedotsgreen from "@assets/images/3dotsgreen.png";
 import threedotsgray from "@assets/images/3dotsgray.png";
 import copyIconWhite from "@assets/images/copyIconWhite.png";
-import logoutIcon from "@assets/images/logout-icon.png";
-import arrowRight from "@assets/images/arrow-black-right.png";
+import send from "@assets/images/live-chat-send-button.png";
+import attach from "@assets/images/attachFileIcon.png";
 import { useNavigate } from "react-router-dom";
 import { Box, fontStyle, height, width } from "@mui/system";
 import { Button, Grid, IconButton, InputAdornment, FormControlLabel, TextField, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Drawer, Avatar, Badge, Menu, MenuList } from "@mui/material";
@@ -36,6 +36,7 @@ import { IMAGE_URL_USER } from "../../constants";
 import { getAllConversation, getConvo, getMessagesByConvoId, getPlayerIdByUUID, updateConversationStatus, updateMessageRead } from "../../api_services/chatSupportAPI";
 import { ZodiacColorPalette } from "../../constants/constant-representative";
 import styles from "./CSRPage.module.scss";
+import desktopBg from "@assets/images/desktop-login-bg.png";
 import { AttachFile, ChevronRight, Close, Logout, MenuOpen, MenuSharp, SendOutlined, SentimentVeryDissatisfied, SentimentVerySatisfied, VolumeUp, WarningAmber } from "@mui/icons-material";
 
 const CSRPage = () => {
@@ -731,16 +732,19 @@ const CSRPage = () => {
         height: '70px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between', // Main container uses space-between
+        justifyContent: 'space-between',
         fontWeight: 'bold',
         py: 3,
         width: '100%',
         boxSizing: 'border-box',
         position: 'fixed',
         zIndex: 1,
-        background: 'linear-gradient(135deg, rgb(82, 164, 71) 0%, rgb(62, 144, 51) 100%)',
+        backgroundImage: `url(${desktopBg})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
-        px:3
+        px: 3
       }}>
         {/* Left-aligned UserInfo */}
         <Box sx={{
@@ -814,7 +818,7 @@ const CSRPage = () => {
           }}>
             <Grid container justifyContent="space-evenly" spacing={1} >
               {['All', 'New', 'Ongoing', 'Closed'].map((filter) => (
-                <Grid item key={filter}>
+                <Grid item key={filter} sx={{fontFamily: "'Baloo 2', sans-serif",}}>
                   <FilterButton
                     filter={filter}
                     activeFilter={activeFilter}
@@ -845,9 +849,9 @@ const CSRPage = () => {
                 style={{ width: '24px', height: '24px', marginRight: '10px' }} 
               />
               <Typography variant="body1" sx={{ 
-                fontSize: '0.9rem',
+                fontSize: '1.2rem',
                 fontWeight: 500,
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: "'Baloo 2', sans-serif",
                 color: '#333'
               }}>
                 Notification Sound
@@ -870,7 +874,7 @@ const CSRPage = () => {
                   borderRadius: '20px',
                   backgroundColor: '#f9f9f9',
                   '& input::placeholder': {
-                    fontFamily: 'Poppins, sans-serif',
+                    fontFamily: "'Baloo 2', sans-serif",
                     opacity: 1,
                     color: '#888'
                   },
@@ -878,10 +882,10 @@ const CSRPage = () => {
                     borderColor: 'transparent',
                   },
                   '&:hover fieldset': {
-                    borderColor: '#e0e0e0',
+                    borderColor: 'gray',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: 'rgb(82, 164, 71, 0.5)',
+                    borderColor: 'gray',
                   },
                 },
               }}
@@ -893,7 +897,7 @@ const CSRPage = () => {
                 ),
                 sx: {
                   '&::placeholder': {
-                    fontFamily: 'Poppins, sans-serif'
+                    fontFamily: "'Baloo 2', sans-serif",
                   }
                 }
               }}
@@ -934,7 +938,7 @@ const CSRPage = () => {
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: 500, fontSize: 18, color: '#cccccc', fontFamily: 'Poppins, sans-serif' }}
+                  sx={{ fontWeight: 500, fontSize: 24, color: '#cccccc', fontFamily: "'Baloo 2', sans-serif", }}
                 >
                   No Conversations Found
                 </Typography>
@@ -962,7 +966,7 @@ const CSRPage = () => {
                     margin: '4px auto',
                     width: '95%',
                     backgroundColor: (selectedPlayerConvo.conversationId && selectedPlayerConvo.conversationId === conversation.conversation_id) 
-                      ? 'rgba(82, 164, 71, 0.1)' 
+                      ? '#FFFAD1' 
                       : 'transparent',
                     transition: 'all 0.2s ease',
                     border: '1px solid transparent',
@@ -1024,7 +1028,7 @@ const CSRPage = () => {
                   {/* Message Content */}
                   <Box sx={{ width: 'calc(100% - 120px)' }}>
                     <Typography variant="body2" sx={{ 
-                      fontFamily: 'Poppins, sans-serif', 
+                      fontFamily: "'Baloo 2', sans-serif",
                       fontWeight: '600', 
                       color: 'rgb(121, 117, 117)',
                       fontSize: '0.875rem'
@@ -1034,7 +1038,7 @@ const CSRPage = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        fontFamily: 'Poppins, sans-serif',
+                        fontFamily: "'Baloo 2', sans-serif",
                         fontWeight: conversation.status === 'New' || conversation.csrUnreadMessageCount > 0 ? 'bold' : 'normal',
                         color: conversation.status === 'New' || conversation.csrUnreadMessageCount > 0 ? '#333333' : '#777777',
                         overflow: 'hidden',
@@ -1063,7 +1067,7 @@ const CSRPage = () => {
                     minWidth: '50px' 
                   }}>
                     <Typography variant="body2" sx={{ 
-                      fontFamily: 'Poppins, sans-serif', 
+                      fontFamily: "'Baloo 2', sans-serif",
                       fontSize: '0.7rem',
                       color: '#888888'
                     }}>
@@ -1152,7 +1156,7 @@ const CSRPage = () => {
                   <Typography 
                     variant="body1" 
                     sx={{ 
-                      fontFamily: 'Poppins, sans-serif', 
+                      fontFamily: "'Baloo 2', sans-serif",
                       color: 'rgba(91, 91, 91, 1)', 
                       mr: 1.25,
                       fontWeight: 500
@@ -1216,7 +1220,7 @@ const CSRPage = () => {
                       variant="h6"
                       sx={{ 
                         fontSize: '24px', 
-                        fontFamily: 'Poppins, sans-serif',
+                        fontFamily: "'Baloo 2', sans-serif",
                         fontWeight: 600,
                         color: '#333',
                         textAlign: 'center'
@@ -1255,7 +1259,7 @@ const CSRPage = () => {
                       <Typography 
                         variant="body1" 
                         sx={{ 
-                          fontFamily: 'Poppins, sans-serif', 
+                          fontFamily: "'Baloo 2', sans-serif",
                           fontSize: '20px',
                           color: '#555',
                           lineHeight: 1.5
@@ -1275,7 +1279,7 @@ const CSRPage = () => {
                       onClick={handleCloseDialog}
                       variant="outlined"
                       sx={{
-                        fontFamily: 'Poppins, sans-serif',
+                        fontFamily: "'Baloo 2', sans-serif",
                         fontSize: '18px',
                         borderRadius: '50px',
                         padding: '8px 32px',
@@ -1295,7 +1299,7 @@ const CSRPage = () => {
                       sx={{
                         backgroundColor: '#d32f2f', 
                         color: 'white', 
-                        fontFamily: 'Poppins, sans-serif', 
+                        fontFamily: "'Baloo 2', sans-serif",
                         fontSize: '18px', 
                         borderRadius: '50px',
                         padding: '8px 32px',
@@ -1346,7 +1350,7 @@ const CSRPage = () => {
                         color: '#999',
                         my: 1.5,
                         textTransform: 'uppercase',
-                        fontFamily: 'Poppins, sans-serif',
+                        fontFamily: "'Baloo 2', sans-serif",
                         fontSize: '0.75rem'
                       }}
                     >
@@ -1370,7 +1374,7 @@ const CSRPage = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          fontFamily: 'Poppins, sans-serif',
+                          fontFamily: "'Baloo 2', sans-serif",
                           color: msg.sender_id === userInfo.id ? '#9f9d9d' : '#a9a6a6',
                           fontSize: '0.75rem',
                           fontWeight: 500
@@ -1381,7 +1385,7 @@ const CSRPage = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          fontFamily: 'Poppins, sans-serif',
+                          fontFamily: "'Baloo 2', sans-serif",
                           color: '#777',
                           fontSize: '0.7rem',
                           ml: 1
@@ -1398,7 +1402,7 @@ const CSRPage = () => {
                         py: 1,
                         borderRadius: '12px',
                         backgroundColor: msg.sender_id === userInfo.id 
-                          ? 'rgb(71, 117, 164)' 
+                          ? '#00A24A' 
                           : '#fff',
                         color: msg.sender_id === userInfo.id ? '#fff' : '#000',
                         boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.2)',
@@ -1422,7 +1426,7 @@ const CSRPage = () => {
                       <Typography
                         variant="caption"
                         sx={{
-                          fontFamily: 'Poppins, sans-serif',
+                          fontFamily: "'Baloo 2', sans-serif",
                           color: '#777',
                           fontSize: '0.7rem',
                           mt: 0.5,
@@ -1522,7 +1526,7 @@ const CSRPage = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: "'Baloo 2', sans-serif",
                   textAlign: 'center',
                   color: 'rgb(82, 164, 71)',
                   my: 1.25
@@ -1536,7 +1540,7 @@ const CSRPage = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: "'Baloo 2', sans-serif",
                   textAlign: 'center',
                   color: 'rgb(82, 164, 71)',
                   my: 1.25
@@ -1556,7 +1560,7 @@ const CSRPage = () => {
                   top: '50%',
                   left: '60%',
                   transform: 'translate(-50%, -50%)',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: "'Baloo 2', sans-serif",
                   color: 'rgba(153, 153, 153, 1)',
                   fontSize: '1.875rem'
                 }}
@@ -1599,7 +1603,12 @@ const CSRPage = () => {
                       onClick={handleSendMessage}
                       disabled={isChatEnded || !selectedPlayerConvo.playerInfo}
                     >
-                      <SendOutlined />
+                      <Box
+                          component="img"
+                          src={send}
+                          alt="attach"
+                          sx={{ width: 35}}
+                        />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -1608,7 +1617,7 @@ const CSRPage = () => {
                 width: '80%',
                 '& .MuiInputBase-input': {
                   padding: '12px 16px',
-                  fontFamily: 'Poppins, sans-serif'
+                  fontFamily: "'Baloo 2', sans-serif",
                 },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '25px',
@@ -1644,8 +1653,14 @@ const CSRPage = () => {
                   onClick={handleAddIconClick}
                   disabled={isChatEnded}
                 >
-                  <AttachFile/>
+                  <Box
+                    component="img"
+                    src={attach}
+                    alt="attach"
+                    sx={{ width: 40}}
+                  />
                 </IconButton>
+
 
                 <input
                   type="file"
@@ -1667,18 +1682,12 @@ const CSRPage = () => {
                     borderRadius: '25px',
                     background: isChatEnded
                       ? 'lightgray'
-                      : 'linear-gradient(45deg, #1976d2, #1565c0)', // Gradient based on #1976d2 (blue shades)
+                      : '#00A24A', // Gradient based on #1976d2 (blue shades)
                     color: 'white',
-                    fontFamily: 'Poppins, sans-serif',
+                    fontFamily: "'Baloo 2', sans-serif",
                     fontWeight: 500,
                     textTransform: 'none',
-                    transition: 'background 0.3s ease-in-out, transform 0.3s ease-in-out', // smooth transition
-                    '&:hover': {
-                      background: isChatEnded
-                        ? 'lightgray'
-                        : 'linear-gradient(45deg, #1976d2, #1565c0)', // Slightly darker blue on hover
-                      transform: 'scale(1.05)', // Slight scale effect on hover
-                    },
+                    transition: 'background 0.3s ease-in-out, transform 0.3s ease-in-out', 
                   }}
                   disabled={isChatEnded}
                 >
@@ -1698,18 +1707,13 @@ const CSRPage = () => {
                     marginLeft: '10px',
                     background: isChatRated
                       ? 'lightgray'
-                      : 'linear-gradient(45deg, #1976d2, #1565c0)', // Gradient based on #1976d2 (blue shades)
+                      : '#00A24A', // Gradient based on #1976d2 (blue shades)
                     color: 'white',
-                    fontFamily: 'Poppins, sans-serif',
+                    fontFamily: "'Baloo 2', sans-serif",
                     fontWeight: 500,
                     textTransform: 'none',
                     transition: 'background 0.3s ease-in-out, transform 0.3s ease-in-out', // smooth transition
-                    '&:hover': {
-                      background: isChatRated
-                        ? 'lightgray'
-                        : 'linear-gradient(45deg, #1976d2, #1565c0)', // Slightly darker blue on hover
-                      transform: 'scale(1.05)', // Slight scale effect on hover
-                    },
+                    
                   }}
                   disabled={isChatRated}
                 >
@@ -1792,7 +1796,7 @@ const CSRPage = () => {
                 sx={{
                   width: 100,
                   height: 100,
-                  border: '4px solid rgb(82, 164, 71)',
+                  border: '4px solid yellow',
                   mb: 2
                 }}
               />
@@ -1801,6 +1805,7 @@ const CSRPage = () => {
             <Typography variant="h5" sx={{ 
               fontWeight: 'bold', 
               fontSize: '1.5rem',
+              fontFamily: "'Baloo 2', sans-serif",
               color: '#333',
               mb: 0.5
             }}>
@@ -1908,7 +1913,7 @@ const CSRPage = () => {
           >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Logout sx={{ 
-                color: 'rgb(82, 164, 71)', 
+                color: 'red', 
                 fontSize: '1.5rem',
                 mr: 1.5
               }} />
@@ -1960,7 +1965,7 @@ const CSRPage = () => {
           <Typography 
             variant="h6" 
             sx={{ 
-              fontFamily: '"Poppins", sans-serif', 
+              fontFamily: "'Baloo 2', sans-serif",
               fontSize: '24px', 
               fontWeight: 'bold', 
               marginBottom: '30px', 
@@ -1983,9 +1988,9 @@ const CSRPage = () => {
               sx={{ 
                 flex: 1, 
                 borderRadius: '50px', 
-                background: 'linear-gradient(180deg, rgb(82, 164, 71) 0%, rgb(62, 134, 51) 100%)', 
+                background: 'linear-gradient(180deg, #FF2020 0%, #C80000 100%)', 
                 color: 'white', 
-                fontFamily: '"Poppins", sans-serif', 
+                fontFamily: "'Baloo 2', sans-serif",
                 fontSize: '18px', 
                 padding: '10px', 
                 '&:hover': { 
@@ -2002,7 +2007,7 @@ const CSRPage = () => {
                 borderRadius: '50px', 
                 backgroundColor: 'white', 
                 color: 'gray', 
-                fontFamily: '"Poppins", sans-serif', 
+                fontFamily: "'Baloo 2', sans-serif",
                 fontSize: '18px', 
                 padding: '10px', 
                 border: '1px solid gray', 
@@ -2159,6 +2164,7 @@ function UserInfo({ copyToClipboard, userInfo, leftPos = '', avatarSize = {}, fo
           textOverflow: 'ellipsis',
           color: fontColor.name,
           fontSize: fontSize.name,
+          fontFamily: "'Baloo 2', sans-serif",
           lineHeight: 1.2,
           textShadow: '0 1px 2px rgba(0,0,0,0.3)'
         }}>
