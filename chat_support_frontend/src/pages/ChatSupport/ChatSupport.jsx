@@ -313,12 +313,12 @@ const ChatSupport = () => {
         }}
       >
         <IconButton onClick={goToHome}>
-        <Box
-          component="img"
-          src={back}
-          alt="attach"
-          sx={{ width: 20}}
-        />
+          <Box
+            component="img"
+            src={back}
+            alt="attach"
+            sx={{ width: 20}}
+          />
         </IconButton>
 
         <Typography 
