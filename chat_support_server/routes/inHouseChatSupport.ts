@@ -103,7 +103,7 @@ export default async function (fastify: FastifyInstance) {
       });
   
     } catch (error: any) {
-      console.error('Error in /init-game:', error);
+      console.error('Error in /init-chat-support:', error);
       return reply.code(500).send({
         success: false,
         error: 'Internal Server Error',
