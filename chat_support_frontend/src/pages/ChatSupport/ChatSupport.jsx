@@ -256,7 +256,7 @@ const ChatSupport = () => {
   };
 
   const goToHome = async () => {
-    navigate('/');
+    navigate(-1);
   };
 
   const SupportCard = styled(Card)(({ theme }) => ({
