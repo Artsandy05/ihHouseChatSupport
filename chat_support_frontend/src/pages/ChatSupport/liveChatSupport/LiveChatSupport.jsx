@@ -861,7 +861,7 @@ useEffect(() => {
         }}
       >
         <Box sx={{
-          background: 'linear-gradient(45deg, rgb(82, 164, 71), rgb(72, 154, 61))',
+          background: '#00A24A',
           color: 'white',
           p: 3,
           textAlign: 'center'
@@ -945,7 +945,7 @@ useEffect(() => {
               px: 4,
               py: 1,
               fontFamily: "'Baloo 2', sans-serif",
-              background: 'linear-gradient(45deg, rgb(82, 164, 71), rgb(72, 154, 61))',
+              background: '#00A24A',
               boxShadow: '0 3px 5px rgba(82, 164, 71, 0.3)',
               '&:hover': {
                 background: 'linear-gradient(45deg, rgb(72, 154, 61), rgb(62, 144, 51))',
@@ -975,7 +975,7 @@ useEffect(() => {
         }}
       >
         <Box sx={{
-          background: 'linear-gradient(45deg, rgb(82, 164, 71), rgb(72, 154, 61))',
+          background: '#00A24A',
           color: 'white',
           p: 3,
           textAlign: 'center'
@@ -1026,7 +1026,7 @@ useEffect(() => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'linear-gradient(135deg, #4caf50, #81c784)',
+                background: '#00A24A',
                 boxShadow: '0 4px 8px rgba(76, 175, 80, 0.3)',
                 mb: 1
               }}>

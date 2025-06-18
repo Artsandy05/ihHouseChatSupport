@@ -256,7 +256,7 @@ const ChatSupport = () => {
   };
 
   const goToHome = async () => {
-    navigate(-1);
+    window.location.href = "https://karera.live";
   };
 
   const SupportCard = styled(Card)(({ theme }) => ({
