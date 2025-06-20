@@ -16,7 +16,7 @@ import send from "@assets/images/live-chat-send-button.png";
 import attach from "@assets/images/attachFileIcon.png";
 import { useNavigate } from "react-router-dom";
 import { Box, fontStyle, height, width } from "@mui/system";
-import { Button, Grid, IconButton, InputAdornment, FormControlLabel, TextField, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Drawer, Avatar, Badge, Menu, MenuList } from "@mui/material";
+import { Button, Grid, IconButton, InputAdornment, FormControlLabel, TextField, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Drawer, Avatar, Badge, Menu, MenuList, Divider } from "@mui/material";
 import avatarBlue from '@assets/images/avatar-blue.png';
 import happy from '@assets/images/happy-face.png';
 import avatarBorder from '@assets/images/avatar-border.png';
@@ -37,6 +37,8 @@ import { getAllConversation, getConvo, getMessagesByConvoId, getPlayerIdByUUID, 
 import { ZodiacColorPalette } from "../../constants/constant-representative";
 import styles from "./CSRPage.module.scss";
 import desktopBg from "@assets/images/desktop-login-bg.png";
+import logout from "@assets/images/logout-icon.png";
+import forceend from "@assets/images/forceend.png";
 import { AttachFile, ChevronRight, Close, Logout, MenuOpen, MenuSharp, SendOutlined, SentimentVeryDissatisfied, SentimentVerySatisfied, VolumeUp, WarningAmber } from "@mui/icons-material";
 
 const CSRPage = () => {
@@ -1226,7 +1228,7 @@ const CSRPage = () => {
                         textAlign: 'center'
                       }}
                     >
-                      Confirm Chat Termination
+                      Force End Session
                     </Typography>
                     <IconButton 
                       aria-label="close"
@@ -1247,15 +1249,15 @@ const CSRPage = () => {
                   </DialogTitle>
                   
                   <DialogContent sx={{ padding: '24px' }}>
-                    <Box sx={{ textAlign: 'center', mb: 2 }}>
-                      <WarningAmber
-                        sx={{ 
-                          fontSize: 64, 
-                          mt: 2,
-                          color: '#ff9800',
-                          mb: 2
-                        }} 
-                      />
+                    <Box sx={{ textAlign: 'center', mb: 2, mt:2 }}>
+                    <img 
+                      src={forceend} 
+                      alt="Force End Session" 
+                      style={{
+                        width: 80,
+                        marginBottom: 20
+                      }}
+                    />
                       <Typography 
                         variant="body1" 
                         sx={{ 
@@ -1263,6 +1265,7 @@ const CSRPage = () => {
                           fontSize: '20px',
                           color: '#555',
                           lineHeight: 1.5
+                          
                         }}
                       >
                         This action will <strong style={{color: '#d32f2f'}}>immediately end</strong> the current conversation.
@@ -1283,12 +1286,8 @@ const CSRPage = () => {
                         fontSize: '18px',
                         borderRadius: '50px',
                         padding: '8px 32px',
-                        border: '2px solid #00a24a',
-                        color: '#00a24a',
-                        '&:hover': {
-                          backgroundColor: 'rgba(0, 162, 74, 0.08)',
-                          border: '2px solid #00a24a'
-                        }
+                        border: '2px solid gray',
+                        color: '#5B5B5B',
                       }}
                     >
                       Cancel
@@ -1309,7 +1308,7 @@ const CSRPage = () => {
                         }
                       }}
                     >
-                      End Chat
+                      Force End
                     </Button>
                   </DialogActions>
                 </Dialog>
@@ -1945,29 +1944,68 @@ const CSRPage = () => {
           } 
         }}
       >
-        
         <Box sx={{ 
           display: 'flex', 
           flexDirection: 'column', 
           alignItems: 'center', 
           padding: '20px' 
         }}>
-          <IconButton 
-            onClick={() => setLogoutDialogOpen(false)} 
-            style={{ 
-              position: 'absolute', 
-              right: '10px', 
-              top: '10px' 
+          {/* Header with title and close button */}
+          <Box sx={{
+            position: 'relative',  // Added for absolute positioning of the close button
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            mb: 2
+          }}>
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                fontFamily: "'Baloo 2', sans-serif",
+                fontSize: '24px', 
+                fontWeight: 'bold',
+                color: 'black',
+                textAlign: 'center'
+              }}
+            >
+              Sign Out
+            </Typography>
+            <IconButton 
+              onClick={() => setLogoutDialogOpen(false)} 
+              sx={{ 
+                position: 'absolute',  // Position absolutely within the relative parent
+                right: 0,              // Align to the right
+                color: 'gray',
+                '&:hover': {
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                }
+              }}
+            >
+              <Close />
+            </IconButton>
+          </Box>
+
+          {/* Divider between header and content */}
+          <Divider sx={{ 
+            width: '100%', 
+            mb: 3,
+            borderColor: 'rgba(0, 0, 0, 0.12)' 
+          }} />
+
+          <img 
+            src={logout} 
+            alt="logout" 
+            style={{
+              width: 80,
+              marginBottom: 20
             }}
-          >
-            <Close />
-          </IconButton>
+          />
           <Typography 
             variant="h6" 
             sx={{ 
               fontFamily: "'Baloo 2', sans-serif",
-              fontSize: '24px', 
-              fontWeight: 'bold', 
+              fontSize: '20px', 
               marginBottom: '30px', 
               textAlign: 'center' 
             }}
@@ -1980,6 +2018,25 @@ const CSRPage = () => {
             width: '100%', 
             gap: '20px' 
           }}>
+            
+            <Button 
+              onClick={() => setLogoutDialogOpen(false)} 
+              sx={{ 
+                flex: 1, 
+                borderRadius: '50px', 
+                backgroundColor: 'white', 
+                color: '#5B5B5B', 
+                fontFamily: "'Baloo 2', sans-serif",
+                fontSize: '18px', 
+                padding: '10px', 
+                border: '1px solid gray', 
+                '&:hover': { 
+                  backgroundColor: '#f5f5f5' 
+                } 
+              }}
+            >
+              Not Now
+            </Button>
             <Button 
               onClick={() => { 
                 navigate('/'); 
@@ -1999,24 +2056,6 @@ const CSRPage = () => {
               }}
             >
               Yes
-            </Button>
-            <Button 
-              onClick={() => setLogoutDialogOpen(false)} 
-              sx={{ 
-                flex: 1, 
-                borderRadius: '50px', 
-                backgroundColor: 'white', 
-                color: 'gray', 
-                fontFamily: "'Baloo 2', sans-serif",
-                fontSize: '18px', 
-                padding: '10px', 
-                border: '1px solid gray', 
-                '&:hover': { 
-                  backgroundColor: '#f5f5f5' 
-                } 
-              }}
-            >
-              Cancel
             </Button>
           </Box>
         </Box>

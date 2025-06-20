@@ -293,63 +293,50 @@ const ChatSupport = () => {
   }));
 
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       {/* Header */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          px: 2,
-          py: 1.5,
-          background: `linear-gradient(180deg, #FFEA00 0%, #FFC600 100%)`,
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-          color: "white",
-          touchAction:'manipulation',
-          width: "95%",
-          position: "fixed",
-          top: 0,
-          zIndex: 1000,
-        }}
-      >
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '16px',
+        background: `linear-gradient(180deg, #FFEA00 0%, #FFC600 100%)`,
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      }}>
         <IconButton onClick={goToHome}>
           <Box
             component="img"
             src={back}
             alt="attach"
-            sx={{ width: 20}}
+            sx={{ width: 20 }}
           />
         </IconButton>
-
+  
         <Typography 
           variant="h6" 
           sx={{
             fontFamily: "'Baloo 2', sans-serif",
-            color:'black'
+            color: 'black'
           }}
         >
           Customer Support
         </Typography>
-
+  
         <IconButton sx={{ color: "white" }}>
-        <Box
-          component="img"
-          src={csicon}
-          alt="attach"
-          sx={{ width: 40}}
-        />
+          <Box
+            component="img"
+            src={csicon}
+            alt="attach"
+            sx={{ width: 40 }}
+          />
         </IconButton>
       </Box>
-
-      {/* Main Content */}
-      <Box sx={{ 
-        p: 3,
-        width: "95%",
-        maxWidth: "1000px",
-        margin: '0 auto',
-        touchAction:'manipulation'
+  
+      {/* Main Content - Pink for now */}
+      <Box sx={{
+        flex: 1,
+        padding: '16px'
       }}>
-        {/* Logo/Header */}
         <Box sx={{ 
           textAlign: 'center',
           mb: 4
@@ -365,161 +352,166 @@ const ChatSupport = () => {
             sx={{
               fontFamily: "'Baloo 2', sans-serif",
               fontWeight: 600,
-              color: 'black'
+              color: 'black',
+              mb: 2,
             }}
           >
             How can we help you?
           </Typography>
-        </Box>
 
-        {/* Support Options */}
+          {/* Support Options */}
         <Box sx={{ mb: 4 }}>
           <Typography 
             variant="body1" 
             sx={{ 
               mb: 2,
               fontFamily: "'Baloo 2', sans-serif",
-              color: 'black'
+              color: 'black',
+              textAlign:'left'
             }}
-          >
+        >
             For concerns or to report an issue:
           </Typography>
 
           {/* Live Chat Card */}
-          <SupportCard onClick={() => handleNavigation(navigateTo)}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box sx={{
-                p: 1.5,
-                borderRadius: '50%',
-                mr: 2,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Box
-                  component="img"
-                  src={cssmallicon}
-                  alt="attach"
-                  sx={{ width: 40}}
-                />
+            <SupportCard onClick={() => handleNavigation(navigateTo)}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{
+                  p: 1.5,
+                  borderRadius: '50%',
+                  mr: 2,
+                  ml: -0.5,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Box
+                    component="img"
+                    src={cssmallicon}
+                    alt="attach"
+                    sx={{ width: 40}}
+                  />
+                </Box>
+                <Box sx={{ml:-1}}>
+                  <Typography 
+                    variant="subtitle1"
+                    sx={{
+                      fontFamily: "'Baloo 2', sans-serif",
+                      fontWeight: 600,
+                      textAlign:'left'
+                    }}
+                  >
+                    Live Chat Support
+                  </Typography>
+                  <Typography 
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                      fontFamily: "'Baloo 2', sans-serif",
+                      textAlign:'left'
+                    }}
+                  >
+                    Available 24/7
+                  </Typography>
+                </Box>
               </Box>
-              <Box>
-                <Typography 
-                  variant="subtitle1"
-                  sx={{
-                    fontFamily: "'Baloo 2', sans-serif",
-                    fontWeight: 600
-                  }}
-                >
-                  Live Chat Support
-                </Typography>
-                <Typography 
-                  variant="body2"
-                  sx={{
-                    color: 'text.secondary',
-                    fontFamily: "'Baloo 2', sans-serif"
-                  }}
-                >
-                  Available 24/7
-                </Typography>
-              </Box>
-            </Box>
-            <ChevronRight sx={{ color: 'action.active' }} />
-          </SupportCard>
+              <ChevronRight sx={{ color: 'action.active' }} />
+            </SupportCard>
 
-          {/* Email Card */}
-          <SupportCardBlue>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box sx={{
-                p: 1.5,
-                borderRadius: '50%',
-                mr: 2,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <Box
-                  component="img"
-                  src={email}
-                  alt="attach"
-                  sx={{ width: 30}}
-                />
+            {/* Email Card */}
+            <SupportCardBlue>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{
+                  p: 1.5,
+                  borderRadius: '50%',
+                  mr: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Box
+                    component="img"
+                    src={email}
+                    alt="attach"
+                    sx={{ width: 30}}
+                  />
+                </Box>
+                <Box>
+                  <Typography 
+                    variant="subtitle1"
+                    sx={{
+                      fontFamily: "'Baloo 2', sans-serif",
+                      fontWeight: 600,
+                      textAlign:'left'
+                    }}
+                  >
+                    Email Us
+                  </Typography>
+                  <Typography 
+                    variant="body2"
+                    sx={{
+                      color: 'text.secondary',
+                      fontFamily: "'Baloo 2', sans-serif",
+                      textAlign:'left'
+                    }}
+                  >
+                    support@karera.live
+                  </Typography>
+                </Box>
               </Box>
-              <Box>
-                <Typography 
-                  variant="subtitle1"
-                  sx={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: 600
-                  }}
-                >
-                  Email Us
-                </Typography>
-                <Typography 
-                  variant="body2"
-                  sx={{
-                    color: 'text.secondary',
-                    fontFamily: "'Poppins', sans-serif"
-                  }}
-                >
-                  support@karera.live
-                </Typography>
-              </Box>
-            </Box>
-            <ChevronRight sx={{ color: 'action.active' }} />
-          </SupportCardBlue>
-        </Box>
-
-        {/* Footer Links */}
-        <Box sx={{ 
-          textAlign: 'center',
-          mt: 4,
-          mb: 2
-        }}>
-          <Typography 
-            variant="body2" 
-            sx={{
-              fontFamily: "'Baloo 2', sans-serif",
-              color: 'black'
-            }}
-          >
-            <Link 
-              onClick={handleOpenTermsAndConditions}
+              <ChevronRight sx={{ color: 'action.active' }} />
+            </SupportCardBlue>
+          </Box>
+          {/* Footer Links */}
+          <Box sx={{ 
+            textAlign: 'center',
+            mt: 4,
+            mb: 2
+          }}>
+            <Typography 
+              variant="body2" 
               sx={{
-                color: '#46AEF7',
-                textDecoration: 'none',
-                '&:hover': { textDecoration: 'underline' },
-                cursor: 'pointer',
-                mr: 0.5
+                fontFamily: "'Baloo 2', sans-serif",
+                color: 'black'
               }}
             >
-              Terms and Conditions
-            </Link>
-            and
-            <Link 
-              onClick={handleOpenPrivacyPolicy}
-              sx={{
-                color: '#46AEF7',
-                textDecoration: 'none',
-                '&:hover': { textDecoration: 'underline' },
-                cursor: 'pointer',
-                ml: 0.5
-              }}
-            >
-              Privacy Policy
-            </Link>
-          </Typography>
+              <Link 
+                onClick={handleOpenTermsAndConditions}
+                sx={{
+                  color: '#46AEF7',
+                  textDecoration: 'none',
+                  '&:hover': { textDecoration: 'underline' },
+                  cursor: 'pointer',
+                  mr: 0.5
+                }}
+              >
+                Terms and Conditions
+              </Link>
+              and
+              <Link 
+                onClick={handleOpenPrivacyPolicy}
+                sx={{
+                  color: '#46AEF7',
+                  textDecoration: 'none',
+                  '&:hover': { textDecoration: 'underline' },
+                  cursor: 'pointer',
+                  ml: 0.5
+                }}
+              >
+                Privacy Policy
+              </Link>
+            </Typography>
+          </Box>
         </Box>
+        {/* Modal */}
+        <PopupModal
+          openModal={openModal}
+          onCloseModal={() => setOpenModal(false)}
+        >
+          {renderSideModalContent(typeModal)}
+        </PopupModal>
       </Box>
-
-      {/* Modal */}
-      <PopupModal
-        openModal={openModal}
-        onCloseModal={() => setOpenModal(false)}
-      >
-        {renderSideModalContent(typeModal)}
-      </PopupModal>
-    </>
+    </Box>
   );
 };
 

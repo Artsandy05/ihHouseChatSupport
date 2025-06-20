@@ -11,6 +11,7 @@ import sad from '@assets/images/sad-face.png';
 import closeIcon from '@assets/images/closeZodiacButtons.png';
 import maleAvatar from '@assets/images/csr-boy-green.png';
 import femaleAvatar from '@assets/images/csr-girl-blue.png';
+import endchat from '@assets/images/endchat.png';
 import typing from "@assets/images/typing.gif";
 import styles from './LiveChatSupport.module.scss';
 import FileViewer from '../FileViewer';
@@ -850,7 +851,7 @@ useEffect(() => {
         onClose={handleClosePrompt}
         PaperProps={{
           sx: {
-            borderRadius: 3,
+            borderRadius: 10,
             overflow: 'hidden',
             background: 'linear-gradient(145deg, #f5f5f5, #ffffff)',
             boxShadow: '0 10px 30px rgba(82, 164, 71, 0.2)',
@@ -861,9 +862,9 @@ useEffect(() => {
         }}
       >
         <Box sx={{
-          background: '#00A24A',
+          background: 'linear-gradient(180deg, #FF2020 0%, #C80000 100%)',
           color: 'white',
-          p: 3,
+          p: 2,
           textAlign: 'center'
         }}>
           <DialogTitle sx={{ 
@@ -876,34 +877,25 @@ useEffect(() => {
             justifyContent: 'center',
             fontFamily: "'Baloo 2', sans-serif",
           }}>
-            <ExitToApp sx={{ mr: 1, fontSize: '2rem' }} />
             End Chat Session
           </DialogTitle>
         </Box>
         
         <DialogContent sx={{ p: 4, textAlign: 'center' }}>
-          <Box sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            mb: 2,
-            color: 'primary.main'
-          }}>
-            <ChatBubbleOutline sx={{ 
-              fontSize: 100,
-              opacity: 0.8,
-              transform: 'rotate(15deg)',
-              filter: 'drop-shadow(0 3px 5px rgba(0,0,0,0.1))'
-            }} />
-            <Close sx={{
-              position: 'absolute',
-              fontSize: 60,
-              color: 'error.main',
-              mt: 1.3,
-              transform: 'rotate(15deg)',
-              ml: 1,
-              opacity: 0.9
-            }} />
-          </Box>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mb: 2,
+          color: 'primary.main'
+        }}>
+          <img 
+            src={endchat} 
+            alt="End chat" 
+            style={{
+              width: 70,
+            }}
+          />
+        </Box>
           <Typography variant="h6" sx={{ mb: 1,fontFamily: "'Baloo 2', sans-serif", }}>
             Are you sure?
           </Typography>
@@ -920,12 +912,12 @@ useEffect(() => {
           <Button 
             onClick={handleClosePrompt}
             variant="outlined"
-            startIcon={<ArrowBack />}
             sx={{
-              borderRadius: 2,
+              borderRadius: 10,
               px: 4,
               py: 1,
-              borderColor: 'grey.300',
+              width:'50%',
+              border:'1px solid gray',
               color: 'text.primary',
               fontFamily: "'Baloo 2', sans-serif",
               '&:hover': {
@@ -939,13 +931,13 @@ useEffect(() => {
           <Button 
             onClick={handleConfirmEndChat}
             variant="contained"
-            endIcon={<ExitToApp />}
             sx={{
-              borderRadius: 2,
+              borderRadius: 10,
               px: 4,
               py: 1,
+              width:'50%',
               fontFamily: "'Baloo 2', sans-serif",
-              background: '#00A24A',
+              background: 'linear-gradient(180deg, #FF2020 0%, #C80000 100%)',
               boxShadow: '0 3px 5px rgba(82, 164, 71, 0.3)',
               '&:hover': {
                 background: 'linear-gradient(45deg, rgb(72, 154, 61), rgb(62, 144, 51))',
@@ -964,7 +956,7 @@ useEffect(() => {
         onClose={() => setShowRateChatPrompt(false)}
         PaperProps={{
           sx: {
-            borderRadius: 3,
+            borderRadius: 10,
             overflow: 'hidden',
             background: 'linear-gradient(145deg, #f5f5f5, #ffffff)',
             boxShadow: '0 10px 30px rgba(82, 164, 71, 0.2)',
@@ -975,9 +967,9 @@ useEffect(() => {
         }}
       >
         <Box sx={{
-          background: '#00A24A',
+          background: 'linear-gradient(360deg, #009135 0%, #00CB60 100%)',
           color: 'white',
-          p: 3,
+          p: 2,
           textAlign: 'center'
         }}>
           <DialogTitle sx={{ 
@@ -990,7 +982,6 @@ useEffect(() => {
             justifyContent: 'center',
             fontFamily: "'Baloo 2', sans-serif",
           }}>
-            <StarRateOutlined sx={{ mr: 1, fontSize: '2rem' }} />
             Rate Your Experience
           </DialogTitle>
         </Box>
@@ -1026,18 +1017,19 @@ useEffect(() => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: '#00A24A',
-                boxShadow: '0 4px 8px rgba(76, 175, 80, 0.3)',
                 mb: 1
               }}>
-                <SentimentVerySatisfied sx={{ 
-                  fontSize: 50,
-                  color: 'white'
-                }} />
+                <img 
+                  src={happy} 
+                  alt="Happy" 
+                  style={{
+                    width: 80
+                  }}
+                />
               </Box>
               <Typography variant="body1" sx={{ 
                 fontWeight: 500,
-                color: 'text.primary',
+                color: '#FFC024',
                 fontFamily: "'Baloo 2', sans-serif",
               }}>
                 Yes
@@ -1064,14 +1056,15 @@ useEffect(() => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'linear-gradient(135deg, #f44336, #e57373)',
-                boxShadow: '0 4px 8px rgba(244, 67, 54, 0.3)',
                 mb: 1
               }}>
-                <SentimentVeryDissatisfied sx={{ 
-                  fontSize: 50,
-                  color: 'white'
-                }} />
+                <img 
+                  src={sad} 
+                  alt="Sad" 
+                  style={{
+                    width: 80
+                  }}
+                />
               </Box>
               <Typography variant="body1" sx={{ 
                 fontWeight: 500,
@@ -1085,7 +1078,6 @@ useEffect(() => {
           
           <Typography variant="body2" sx={{ 
             color: 'text.secondary',
-            fontStyle: 'italic',
             fontFamily: "'Baloo 2', sans-serif",
           }}>
             Your feedback helps us improve our service
@@ -1095,7 +1087,7 @@ useEffect(() => {
 
 
       {/* Footer */}
-      {isChatEnded && <div id={styles.chatEndedMessage}>The chat session has ended</div>}
+      {isChatEnded && <div id={styles.chatEndedMessage} style={{fontFamily: "'Baloo 2', sans-serif",}}>The chat session has ended</div>}
       {!isChatEnded && <div id={styles.footer} style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '16px', boxSizing: 'border-box' }}>
         <TextField
           variant="outlined"

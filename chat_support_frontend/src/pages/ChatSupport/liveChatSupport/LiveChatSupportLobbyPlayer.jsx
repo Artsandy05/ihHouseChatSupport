@@ -9,7 +9,8 @@ import {
   PersonOutline,
   MailOutline,
   PhoneAndroid,
-  Refresh
+  Refresh,
+  KeyboardArrowUp
 } from '@mui/icons-material';
 import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
@@ -24,7 +25,8 @@ import maleAvatar from '../../../assets/images/csr-boy-green.png';
 import femaleAvatar from '../../../assets/images/csr-girl-blue.png';
 import WebSocketManager from '../../../api_services/WebSocketManager';
 import { getRequiredUrl } from '../components/common';
-import desktopBg from "@assets/images/desktop-login-bg.png";
+import search from "@assets/images/search.png";
+import { faqs } from '../constants/constantfaqs';
 
 
 
@@ -39,7 +41,12 @@ const LiveChatSupportLobbyPlayer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [expandedFaqs, setExpandedFaqs] = useState({});
+  const [filteredFaqs, setFilteredFaqs] = useState([]);
+  const [expandedCategories, setExpandedCategories] = useState({});
   const userInfoString = localStorage.getItem('userInfo');
+  const faqsText = faqs;
   const data = localStorage.getItem('data');
   let id, first_name, last_name, mobile_number, email, user_type;
   if (userInfoString) {
@@ -64,6 +71,77 @@ const LiveChatSupportLobbyPlayer = () => {
 
   const primaryColor = 'rgb(82, 164, 71)';
   const lightPrimary = 'rgba(82, 164, 71, 0.1)';
+
+  useEffect(() => {
+    // Initialize with empty expanded state - user will expand manually
+    setExpandedCategories({});
+    
+    // Show only first 4 FAQs initially
+    setFilteredFaqs(faqsText.slice(0, 5));
+  }, []);
+
+
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      // When search is empty, show only first 4 FAQs
+      setFilteredFaqs(faqsText.slice(0, 5));
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const results = faqsText.map(category => {
+      const matchedItems = category.data.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.description.toLowerCase().includes(query)
+      );
+      
+      if (matchedItems.length > 0) {
+        return {
+          ...category,
+          data: matchedItems
+        };
+      }
+      return null;
+    }).filter(Boolean);
+
+    // Show all matching results when searching
+    setFilteredFaqs(results);
+  }, [searchQuery, faqsText]);
+
+  const toggleCategory = (categoryIndex) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [categoryIndex]: !prev[categoryIndex]
+    }));
+  };
+  const toggleFaq = (categoryIndex, faqIndex) => {
+    setExpandedFaqs(prev => ({
+      ...prev,
+      [`${categoryIndex}-${faqIndex}`]: !prev[`${categoryIndex}-${faqIndex}`]
+    }));
+  };
+
+  const formatDescription = (description) => {
+    return description.split('\n\n').map((paragraph, i) => {
+      if (paragraph.startsWith('Step') || paragraph.startsWith('STEP')) {
+        return (
+          <div key={i} style={{ marginBottom: '12px' }}>
+            <strong style={{ color: '#333' }}>{paragraph.split('\n')[0]}</strong>
+            <p style={{ margin: '8px 0 0 16px' }}>{paragraph.split('\n').slice(1).join('\n')}</p>
+          </div>
+        );
+      } else if (paragraph.startsWith('•')) {
+        return (
+          <ul key={i} style={{ margin: '8px 0', paddingLeft: '24px' }}>
+            {paragraph.split('\n').map((item, j) => (
+              <li key={j} style={{ marginBottom: '4px' }}>{item.replace('•', '').trim()}</li>
+            ))}
+          </ul>
+        );
+      }
+      return <p key={i} style={{ marginBottom: '12px' }}>{paragraph}</p>;
+    });
+  };
 
   const handleBackClick = () => {
     navigate(data ? `/chat-support?data=${data}`: '/chat-support');
@@ -312,13 +390,12 @@ const LiveChatSupportLobbyPlayer = () => {
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
               cursor: 'pointer',
               transition: 'transform 0.2s',
-              position: 'relative', // Needed for absolute positioning
+              position: 'relative',
               ':hover': {
                 transform: 'translateY(-2px)'
               }
             }}
           >
-            {/* CSR Avatar */}
             <Avatar 
               src={csrAvatar}
               style={{ 
@@ -328,7 +405,6 @@ const LiveChatSupportLobbyPlayer = () => {
               }}
             />
 
-            {/* Chat Info (Name + Last Message) */}
             <div style={{ flex: 1 }}>
               <h3 style={{ 
                 margin: 0,
@@ -351,10 +427,9 @@ const LiveChatSupportLobbyPlayer = () => {
               </p>
             </div>
 
-            {/* Unread Messages Badge - NOW ON THE RIGHT SIDE */}
             {latestMessageCount > 0 && (
               <div style={{
-                marginLeft: '12px', // Pushes it to the right
+                marginLeft: '12px',
                 backgroundColor: '#ff5252',
                 color: 'white',
                 borderRadius: '50%',
@@ -365,7 +440,7 @@ const LiveChatSupportLobbyPlayer = () => {
                 justifyContent: 'center',
                 fontSize: '12px',
                 fontWeight: 'bold',
-                flexShrink: 0 // Prevents shrinking
+                flexShrink: 0
               }}>
                 {latestMessageCount}
               </div>
@@ -387,34 +462,41 @@ const LiveChatSupportLobbyPlayer = () => {
 
       {/* Content Section */}
       <div style={{ padding: '16px' }}>
-        <div style={{
-          position: 'relative',
-          marginBottom: '24px',
-          width: '80%',
-        }}>
-          <input 
-            type="text" 
-            placeholder="Search your concern or inquiry" 
-            style={{
-              width: '100%',
-              padding: '12px 16px 12px 48px',
-              borderRadius: '24px',
-              border: '1px solid #ddd',
-              fontSize: '14px',
-              outline: 'none',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-            }}
-          />
-          <Search 
-            style={{
-              position: 'absolute',
-              left: '16px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: '#999',
-            }}
-          />
-        </div>
+      <div style={{
+        position: 'relative',
+        marginBottom: '24px',
+        marginLeft:-5
+      }}>
+        <input 
+          type="text" 
+          placeholder="Search your concern or inquiry here" 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{
+            width: '80%',
+            padding: '12px 48px 12px 16px', // Changed padding to put space on right
+            borderRadius: '10px',
+            border: '1px solid #ddd',
+            background:'#F5F5F5',
+            fontSize: '14px',
+            fontFamily: '"Baloo 2", sans-serif',
+            outline: 'none',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+          }}
+        />
+        <img 
+          src={search} 
+          alt="Search icon"
+          style={{
+            position: 'absolute',
+            right: '16px', // Changed from left to right
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '20px', // Added width
+            height: '20px', // Added height
+          }}
+        />
+      </div>
 
         <div style={{ marginBottom: '24px' }}>
           <h3 style={{ 
@@ -426,99 +508,89 @@ const LiveChatSupportLobbyPlayer = () => {
             Frequently Asked Questions
           </h3>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-              "How to Deposit?",
-              "How to Withdraw?",
-              "What is KYC?",
-              "What types of valid IDs do you accept?"
-            ].map((question, index) => (
-              <div 
-                key={index} 
-                style={{ 
-                  backgroundColor: getBackground(index + 1),
-                  borderRadius: '12px',
-                  padding: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  ':hover': {
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-                  }
-                }}
-              >
-                <span style={{ 
-                  color: '#333',
-                  fontSize: '14px',
-                  fontWeight: '500'
-                }}>
-                  {question}
-                </span>
-                <KeyboardArrowDown style={{ color: primaryColor }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginLeft:-5 }}>
+            {filteredFaqs.map((category, categoryIndex) => (
+              <div key={categoryIndex}>
+                <div 
+                  onClick={() => toggleCategory(categoryIndex)}
+                  style={{ 
+                    backgroundColor: category.backgroundColor || getBackground(categoryIndex + 1),
+                    borderRadius: '12px',
+                    padding: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    borderLeft: `4px solid ${category.leftBorderColor || primaryColor}`,
+                    
+                  }}
+                >
+                  <span style={{ 
+                    color: '#333',
+                    fontSize: '16px',
+                    fontWeight: '600'
+                  }}>
+                    {category.title}
+                  </span>
+                  {expandedCategories[categoryIndex] ? (
+                    <KeyboardArrowUp style={{ color: 'white', background:'gray', borderRadius:50, width:20, height:20 }} />
+                  ) : (
+                    <KeyboardArrowDown style={{ color: 'white', background:'gray', borderRadius:50,width:20, height:20 }} />
+                  )}
+                </div>
+                
+                {expandedCategories[categoryIndex] && (
+                  <div style={{ 
+                    marginTop: '8px',
+                    backgroundColor: 'rgba(255,255,255,0.9)',
+                    borderRadius: '8px',
+                    padding: '8px',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                  }}>
+                    {category.data.map((faq, faqIndex) => (
+                      <div key={faqIndex} style={{ marginBottom: '12px' }}>
+                        <div 
+                          onClick={() => {toggleFaq(categoryIndex, faqIndex);}}
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '12px',
+                            cursor: 'pointer',
+                            backgroundColor: category.backgroundColor,
+                            borderRadius: '6px'
+                          }}
+                        >
+                          <span style={{ fontWeight: '500', fontSize: '14px', color: '#333' }}>
+                            {faq.title}
+                          </span>
+                          {expandedFaqs[`${categoryIndex}-${faqIndex}`] ? (
+                            <KeyboardArrowUp style={{ color: 'white', background:'gray', borderRadius:50, width:20, height:20 }} />
+                          ) : (
+                            <KeyboardArrowDown style={{ color: 'white', background:'gray', borderRadius:50, width:20, height:20 }} />
+                          )}
+                        </div>
+                        
+                        {expandedFaqs[`${categoryIndex}-${faqIndex}`] && (
+                          <div style={{
+                            padding: '12px',
+                            baackground: `lightgray`,
+                            borderRadius: '4px',
+                            marginTop: '4px',
+                            fontSize: '14px',
+                            lineHeight: '1.5',
+                            color: '#555'
+                          }}>
+                            {formatDescription(faq.description)}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-          </div>
-        </div>
-
-        <div style={{ marginBottom: '24px' }}>
-          <h3 style={{ 
-            color: '#333',
-            fontSize: '16px',
-            fontWeight: '600',
-            margin: '0 0 12px 8px'
-          }}>
-            Contact Options
-          </h3>
-          
-          <div style={{ 
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '16px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-              <MailOutline style={{ color: primaryColor, marginRight: '12px' }} />
-              <div>
-                <p style={{ 
-                  margin: 0,
-                  fontSize: '12px',
-                  color: '#999'
-                }}>
-                  Email
-                </p>
-                <p style={{ 
-                  margin: 0,
-                  fontSize: '14px',
-                  color: '#333',
-                  fontWeight: '500'
-                }}>
-                  support@karera.live
-                </p>
-              </div>
-            </div>
-            
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <PhoneAndroid style={{ color: primaryColor, marginRight: '12px' }} />
-              <div>
-                <p style={{ 
-                  margin: 0,
-                  fontSize: '12px',
-                  color: '#999'
-                }}>
-                  Phone
-                </p>
-                <p style={{ 
-                  margin: 0,
-                  fontSize: '14px',
-                  color: '#333',
-                  fontWeight: '500'
-                }}>
-                  +1 (800) 123-4567
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
