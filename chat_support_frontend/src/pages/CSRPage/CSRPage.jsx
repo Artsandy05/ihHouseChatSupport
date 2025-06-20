@@ -708,6 +708,7 @@ const CSRPage = () => {
       justifyContent: "center",
       alignItems: "center",
       borderRadius: "50%",
+      fontFamily: "'Baloo 2', sans-serif",
       width: "40px",
       height: "40px",
       fontSize: "14px",
@@ -1918,6 +1919,7 @@ const CSRPage = () => {
               }} />
               <Typography variant="h6" sx={{ 
                 fontSize: '1rem',
+                fontFamily: "'Baloo 2', sans-serif",
                 fontWeight: '500',
                 color: '#555'
               }}>
