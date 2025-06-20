@@ -10,6 +10,11 @@ async function authRoutes(fastify) {
     handler: controllers2.login,
   });
 
+  fastify.post("/logout", {
+    schema: schema2.logoutSchema,
+    handler: controllers2.logout,
+  });
+
   fastify.post("/loginV2", {
     schema: schema.loginMobileSchema,
     handler: controllers.loginMobileController,
@@ -79,11 +84,6 @@ async function authRoutes(fastify) {
   fastify.get("/sites", {
     schema: schema.getAllSites,
     handler: controllers.getAllSites,
-  });
-
-  fastify.post("/logout", {
-    schema: schema.logoutUser,
-    handler: controllers.logoutUser,
   });
 
   fastify.post("/:id/upload-image/:type", {

@@ -118,6 +118,30 @@ const loginSchema = {
   },
 };
 
+const logoutSchema = {
+  response: {
+    200: {
+      type: "object",
+      properties: {
+        message: {
+          type: "string",
+          default: "Logout successful!", // Default success message
+        },
+      },
+    },
+    400: {
+      type: "object",
+      properties: {
+        message: {
+          type: "string",
+          default: "Logout failed", // Default error message
+        },
+      },
+    },
+  },
+};
+
+
 const getConvo = {
   response: {
     200: {
@@ -945,6 +969,7 @@ const claimRepresentativePlayerTransactions = {
     claimRepresentativePlayerTransactions,
     getOverallTopGiversRanking,
     loginSchema,
+    logoutSchema,
     getGames,
     getAllActiveCsr
   };

@@ -611,13 +611,6 @@ function liveChat(fastify) {
     }, PING_INTERVAL);
 
     pingIntervalIdConnUsers = setInterval(async () => {
-      
-      activeCSR.forEach(async (userData) => {
-        await User.update(
-          { isActive: true }, // Set isActive to true
-          { where: { id: userData.id } } // Update the user with the specific uuid
-        );
-      });
 
       await updateConnectedClientsCount();
     }, PING_INTERVAL_CONN_USERS);

@@ -1811,6 +1811,34 @@ const login = async (req, reply) => {
 };
 
   
+const logout = async (req, reply) => {
+  const { userId } = req.body;
+
+  if (!userId) {
+    return errorResponse('User ID required for logout', reply, 'custom');
+  }
+
+  try {
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return errorResponse('User not found', reply, 'custom');
+    }
+
+    // Use User.update() method like in your login example
+    await User.update({ isActive: false }, { where: { id: user.id } });
+    user.isActive = false; // Update the local user object to reflect the change
+
+
+    successResponse({}, 'Logged out successfully!', reply);
+
+  } catch (err) {
+    console.error('Logout error:', err);
+    return errorResponse('Logout error', reply, 'custom');
+  }
+};
+
+
 
   
   
@@ -1854,5 +1882,6 @@ export default {
   claimRepresentativePlayerTransactions,
   getOverallTopGiversRanking,
   getAllActiveCsr,
-  login
+  login,
+  logout
 };

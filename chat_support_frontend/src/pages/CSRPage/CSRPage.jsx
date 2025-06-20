@@ -33,11 +33,11 @@ import FileViewer from "../../components/FileViewer";
 import WebSocketManager from "../../api_services/WebSocketManager";
 import { getRequiredUrl } from "../../utils/common";
 import { IMAGE_URL_USER } from "../../constants";
-import { getAllConversation, getConvo, getMessagesByConvoId, getPlayerIdByUUID, updateConversationStatus, updateMessageRead } from "../../api_services/chatSupportAPI";
+import { getAllConversation, getConvo, getMessagesByConvoId,logout, getPlayerIdByUUID, updateConversationStatus, updateMessageRead } from "../../api_services/chatSupportAPI";
 import { ZodiacColorPalette } from "../../constants/constant-representative";
 import styles from "./CSRPage.module.scss";
 import desktopBg from "@assets/images/desktop-login-bg.png";
-import logout from "@assets/images/logout-icon.png";
+import logoutIcon from "@assets/images/logout-icon.png";
 import forceend from "@assets/images/forceend.png";
 import { AttachFile, ChevronRight, Close, Logout, MenuOpen, MenuSharp, SendOutlined, SentimentVeryDissatisfied, SentimentVerySatisfied, VolumeUp, WarningAmber } from "@mui/icons-material";
 
@@ -272,7 +272,7 @@ const CSRPage = () => {
     }
   }, [hasReceivedSignal]);
 
-  console.log(selectedPlayerConvo)
+  //console.log(selectedPlayerConvo)
 
   useEffect(() => {
     wss.connect();
@@ -377,6 +377,23 @@ const CSRPage = () => {
     const player = await getPlayerIdByUUID(uuid);
     return player;
   }
+
+
+  const handleLogout = async () => {
+    try {
+      const logoutTrigger = await logout(userInfo.id);
+      console.log(logoutTrigger);
+  
+      if (logoutTrigger.status === 'API_SUCCESS') {
+        localStorage.removeItem('user');
+        navigate('/');
+      } else {
+        console.error('Logout failed:', logoutTrigger.message);
+      }
+    } catch (error) {
+      console.error('An error occurred during logout:', error);
+    }
+  };
   
   const fetchConversation = async () => {
     if (selectedPlayerConvo.playerInfo) {
@@ -1996,7 +2013,7 @@ const CSRPage = () => {
           }} />
 
           <img 
-            src={logout} 
+            src={logoutIcon} 
             alt="logout" 
             style={{
               width: 80,
@@ -2041,8 +2058,7 @@ const CSRPage = () => {
             </Button>
             <Button 
               onClick={() => { 
-                navigate('/'); 
-                localStorage.removeItem('user'); 
+                handleLogout();
               }} 
               sx={{ 
                 flex: 1, 

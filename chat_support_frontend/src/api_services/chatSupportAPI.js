@@ -14,6 +14,13 @@ export const getAllConversation = async (userId, status = false) => {
     .catch(catchError);
 };
 
+export const logout = async (userId) => {
+  return await useAxios
+    .post(`/auth/logout`, { userId })
+    .then((res) => res.data)
+    .catch(catchError);
+};
+
 export const getPlayerIdByUUID = async (uuid) => {
   return await useAxios
     .get(`/get-playerID-by-uuid`, { params: { uuid } }) 
