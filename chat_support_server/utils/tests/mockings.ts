@@ -1,5 +1,5 @@
-// Mock responses for Kingfisher API
-export const mockKingfisherAPI = async (endpoint: string, data: any) => {
+
+export const mockAPI = async (endpoint: string, data: any) => {
   const { user_token } = data;
 
   // Dummy responses based on endpoint
@@ -7,8 +7,8 @@ export const mockKingfisherAPI = async (endpoint: string, data: any) => {
     case '/get-user-details':
       return {
         user_id: 'user_123',
-        username: 'kingfisher_player',
-        email: 'player@kingfisher.com',
+        username: 'test',
+        email: 'player@test.com',
         status: 'verified'
       };
 

@@ -1,12 +1,10 @@
-// src/routes/kingfisher.ts
+
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import axios from 'axios';
 import GameList from '../models/GameList';
-import { mockKingfisherAPI } from '../utils/tests/mockings';
 import createEncryptor from '../utils/createEncryptor';
 
 const IN_HOUSE_GAME = {
-  baseUrl: 'https://kingfisher.com/api',
   endpoints: {
     walletBalance: '/get-wallet-balance',
     userDetails: '/get-user-details',
@@ -38,27 +36,7 @@ interface InitGameRequestBody {
   };
 }
 
-// Helper function to call Kingfisher APIs
-async function callKingfisherAPI(endpoint: string, data: any = {}, method = 'POST') {
-  try {
-    const url = `${IN_HOUSE_GAME.baseUrl}${endpoint}`;
-    const headers = {
-      'Authorization': `Bearer ${IN_HOUSE_GAME.apiKey}`,
-      'Content-Type': 'application/json'
-    };
 
-    const response = await axios({
-      method,
-      url,
-      data,
-      headers
-    });
-
-    return response.data;
-  } catch (error: any) {
-    throw new Error(`Failed to call Kingfisher API: ${error.message}`);
-  }
-}
 
 export default async function (fastify: FastifyInstance) {
   fastify.addHook('onRequest', (request, reply, done) => {

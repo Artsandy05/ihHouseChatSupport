@@ -42,17 +42,6 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        name: "Golden Goose",
-        label: "golden_goose",
-        moderatorRoute:"/moderator/golden_goose",
-        gameRoute:"/golden_goose",
-        url:"http://gg.kingfisher777.com/golden_goose",
-        isActive:1,
-        banner:"../assets/images/home-zodiacrace-gamelist-banner.jpg",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
     ];
 
     await queryInterface.bulkInsert("`games-list`", gamesData, {});

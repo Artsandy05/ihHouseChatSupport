@@ -69,11 +69,7 @@ fastify.get(`${process.env.PREFIX}/test`, (req, res) => {
   res.send("test");
 });
 
-// Token test endpoint
-fastify.post('/test-token', async (req, reply) => {
-  const token = fastify.jwt.sign({ client: 'kingfisher' });
-  return { token };
-});
+
 
 // Restart endpoint (for development)
 fastify.get(`${process.env.PREFIX}/restart`, (req, res) => {

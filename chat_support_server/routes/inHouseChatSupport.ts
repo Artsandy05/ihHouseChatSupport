@@ -1,9 +1,8 @@
-// src/routes/kingfisher.ts
+
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import createEncryptor from '../utils/createEncryptor';
 
-const IN_HOUSE_GAME = {
-  baseUrl: 'https://kingfisher.com/api',
+const CHAT_SUPPORT = {
   endpoints: {
     walletBalance: '/get-wallet-balance',
     userDetails: '/get-user-details',
@@ -54,7 +53,7 @@ export default async function (fastify: FastifyInstance) {
         });
       }
 
-      if (apiKey !== IN_HOUSE_GAME.apiKey) {
+      if (apiKey !== CHAT_SUPPORT.apiKey) {
         return reply.code(401).send({ 
           success: false,
           error: 'Unauthorized: Invalid API Key' 
