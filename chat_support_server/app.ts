@@ -61,7 +61,6 @@ fastify.register(authRoutes, { prefix: `${process.env.PREFIX}/auth` });
 fastify.register(publicRoutes, { prefix: `${process.env.PREFIX}/` });
 fastify.register(protectedRoutes, { prefix: `${process.env.PREFIX}/admin` });
 fastify.register(auditRoutes, { prefix: `${process.env.PREFIX}/audit` });
-fastify.register(inHouseGames, { prefix: `${process.env.PREFIX}/in-house-games` });
 fastify.register(inHouseChatSupport, { prefix: `${process.env.PREFIX}/in-house-chat-support` });
 
 // Test endpoint
