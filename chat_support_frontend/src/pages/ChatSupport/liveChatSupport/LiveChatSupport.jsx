@@ -899,8 +899,9 @@ useEffect(() => {
           <Typography variant="h6" sx={{ mb: 1,fontFamily: "'Baloo 2', sans-serif", }}>
             Are you sure?
           </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary',fontFamily: "'Baloo 2', sans-serif", }}>
-            This will permanently end your current chat session.
+          <Typography variant="body1" sx={{ color: 'text.secondary', fontFamily: "'Baloo 2', sans-serif" }}>
+            This will end your current chat<br />
+            session permanently.
           </Typography>
         </DialogContent>
         
