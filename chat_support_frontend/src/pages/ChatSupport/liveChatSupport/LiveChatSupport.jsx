@@ -633,7 +633,7 @@ useEffect(() => {
     </div>
 
       {/* Messages */}
-      <div id={styles.messagesContainer}>
+      <div id={styles.messagesContainer} >
         <div style={{ marginBottom: 65 }}></div>
         {messageList.map((msg, index) => {
           const messageDate = new Date(msg.createdAt);
@@ -651,7 +651,7 @@ useEffect(() => {
             index === 0 || new Date(messageList[index - 1].createdAt).toDateString() !== messageDate.toDateString();
 
           return (
-            <Box key={msg.message_id} sx={{ mb: 1 }}>
+            <Box key={msg.message_id} sx={{ mb: 1,  }}>
               {showDateDivider && (
                 <Divider sx={{ my: 2 }}>
                   <Typography variant="caption" sx={{ color: 'text.secondary', textTransform: 'uppercase', fontFamily: "'Baloo 2', sans-serif", }}>
@@ -1089,7 +1089,7 @@ useEffect(() => {
 
       {/* Footer */}
       {isChatEnded && <div id={styles.chatEndedMessage} style={{fontFamily: "'Baloo 2', sans-serif",}}>The chat session has ended</div>}
-      {!isChatEnded && <div style={{ display: 'flex', alignItems: 'center', width: '95.5%', padding: '16px', boxSizing: 'border-box',position:'fixed', bottom:0 }}>
+      {!isChatEnded && <div style={{ display: 'flex', alignItems: 'center', width: '95.5%', padding: '16px', boxSizing: 'border-box',position:'fixed', bottom:0, background:'#f5f5f5' }}>
         <TextField
           variant="outlined"
           placeholder="Type your message"
