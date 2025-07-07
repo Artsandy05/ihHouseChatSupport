@@ -523,6 +523,8 @@ const CSRPage = () => {
   
   }, [wss, selectedPlayerConvo, userInfo, isSoundOn]);
 
+  console.log(userInfo.gender)
+
   useEffect(() => {
     const sendTypingSignal = async () => {
       try {
@@ -1722,7 +1724,7 @@ const CSRPage = () => {
                     margin: 'auto',
                     borderRadius: '25px',
                     marginLeft: '10px',
-                    background: isChatRated
+                    background: isChatRated || !isChatEnded
                       ? 'lightgray'
                       : '#00A24A', // Gradient based on #1976d2 (blue shades)
                     color: 'white',
@@ -1732,7 +1734,7 @@ const CSRPage = () => {
                     transition: 'background 0.3s ease-in-out, transform 0.3s ease-in-out', // smooth transition
                     
                   }}
-                  disabled={isChatRated}
+                  disabled={isChatRated || !isChatEnded}
                 >
                   Rate
                 </Button>
@@ -1809,7 +1811,7 @@ const CSRPage = () => {
               }
             >
               <Avatar
-                src={userInfo.gender === 'male' ? maleAvatar : femaleAvatar}
+                src={userInfo.gender === 1 ? maleAvatar : femaleAvatar}
                 sx={{
                   width: 100,
                   height: 100,

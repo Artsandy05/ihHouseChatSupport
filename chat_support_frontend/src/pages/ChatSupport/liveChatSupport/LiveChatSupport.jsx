@@ -1088,7 +1088,7 @@ useEffect(() => {
 
       {/* Footer */}
       {isChatEnded && <div id={styles.chatEndedMessage} style={{fontFamily: "'Baloo 2', sans-serif",}}>The chat session has ended</div>}
-      {!isChatEnded && <div id={styles.footer} style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '16px', boxSizing: 'border-box' }}>
+      {!isChatEnded && <div style={{ display: 'flex', alignItems: 'center', width: '95.5%', padding: '16px', boxSizing: 'border-box',position:'fixed', bottom:0 }}>
         <TextField
           variant="outlined"
           placeholder="Type your message"

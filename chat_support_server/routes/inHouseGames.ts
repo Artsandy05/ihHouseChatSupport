@@ -13,7 +13,7 @@ const IN_HOUSE_GAME = {
     createSales: '/create-sales',
     updateSales: '/update-sales'
   },
-  apiKey: process.env.IN_HOUSE_GAME_KEY || 'default-key-in-dev' // Set this in your .env
+  apiKey: process.env.IN_HOUSE_KEY || 'default-key-in-dev' // Set this in your .env
 };
 
 const encryptor = createEncryptor(process.env.ENCRYPTION_SECRET);

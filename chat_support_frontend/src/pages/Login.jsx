@@ -468,7 +468,7 @@ const Login = () => {
             fontFamily: "'Roboto', sans-serif",
             fontWeight: 500
           }}>
-            © {new Date().getFullYear()} karera.live All rights reserved.
+            © {new Date().getFullYear()} Karera.Live All rights reserved.
           </Typography>
         </Box>
       </Box>
