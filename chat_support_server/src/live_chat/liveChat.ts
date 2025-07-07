@@ -461,20 +461,20 @@ function liveChat(fastify) {
       clients.delete(socket);
       activeCSR.delete(finalUserInfo);
 
-      if (finalUserInfo.role === 'player' && !finalUserInfo.isPlayerInChatSupport) {
-          await User.update(
-              { isActive: false }, // Set isActive to false
-              { where: { id: finalUserInfo.id } } // Update the user with the specific uuid
-          );
-          const response = JSON.stringify({
-            event: 'updateActivestatus',
-            data: {activeStatusUpdated:true}
-          });
-          clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
-              client.send(response);
-            }
-          });
+      if (finalUserInfo.role === 'player') {
+        await User.update(
+            { isActive: false }, // Set isActive to false
+            { where: { id: finalUserInfo.id } } // Update the user with the specific uuid
+        );
+        const response = JSON.stringify({
+          event: 'updateActivestatus',
+          data: {activeStatusUpdated:true}
+        });
+        clients.forEach(client => {
+          if (client.readyState === WebSocket.OPEN) {
+            client.send(response);
+          }
+        });
       }
       
       

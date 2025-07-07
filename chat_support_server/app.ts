@@ -27,7 +27,7 @@ const fastifyJwt = require("@fastify/jwt");
 const fastifyAuth = require("@fastify/auth");
 
 const fastify = require("fastify")({
-  logger: true,
+  logger: false,
   trustProxy: true
 });
 
